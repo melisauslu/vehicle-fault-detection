@@ -1,10 +1,22 @@
 import glob
 import os
+import shutil
 import pandas as pd
+
+BASLANGIC_KES_SN = 30                      # her sürüşün ilk 30 saniyesi atılır
+BAS_KES_DK = {                             # başında bozuk bölüm olan dosyalar
+    "TripB02.csv": 3.5,
+}
+SON_KES_DK = {                             # bozuk bölümü başlayan dosyalar
+    "TripB04.csv": 15.0,
+    "TripB09.csv": 45.0,
+}
+MIN_ROWS = 3000                            # 0,1 sn aralıkla 5 dakika
 
 def load_trip(path):
     df = pd.read_csv(path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.replace(r"\s+", " ", regex=True).str.strip()
+    df.columns = df.columns.str.replace("Velocity [km/h]]]", "Velocity [km/h]", regex=False)
     cols = list(df.columns)
     seen = {}
     for i, c in enumerate(cols):
@@ -14,37 +26,41 @@ def load_trip(path):
     df.columns = cols
     return df
 
-def clean_trip(d):
-    ok = ~d.isna().any(axis=1)
+def clean_trip(d, ad):
+    ok = ~d.isna().any(axis=1)             # satırda hiç eksik yoksa True
     if not ok.any():
         return None
     first = ok.idxmax()
     last = ok[::-1].idxmax()
-    d = d.loc[first:last].copy()
-    d = d.interpolate(limit=50)
-    return d.reset_index(drop=True)
+    d = d.loc[first:last].copy()           # baş ve sondaki boşları kes
+    d = d.interpolate(limit=50)            # ortadaki küçük boşlukları doldur
 
-MIN_ROWS = 3000                           
+    bas = max(BASLANGIC_KES_SN, BAS_KES_DK.get(ad, 0) * 60)
+    d = d[d["Time [s]"] >= bas]                            # başlangıç etkisini / bozuk başı at
+    if ad in SON_KES_DK:
+        d = d[d["Time [s]"] <= SON_KES_DK[ad] * 60]        # bozuk sonu at
+    d = d.reset_index(drop=True)
+    if len(d) > 0:
+        d["Time [s]"] = (d["Time [s]"] - d["Time [s]"].iloc[0]).round(1)   # zamanı 0'dan başlat
+    return d
 
-os.makedirs("data/clean_B", exist_ok=True)
+shutil.rmtree("data/clean_B", ignore_errors=True)          # eski çıktıları temizle
+os.makedirs("data/clean_B")
+
 rapor = []
 for f in sorted(glob.glob("data/B_winter/*.csv")):
     ad = os.path.basename(f)
     d = load_trip(f)
-    c = clean_trip(d)
-    if c is None:
-        durum = "ELENDİ (kullanılabilir satır yok)"
-        yeni = 0
+    c = clean_trip(d, ad)
+    if c is None or len(c) == 0:
+        durum, yeni = "ELENDİ (kullanılabilir satır yok)", 0
     elif len(c) < MIN_ROWS:
-        durum = "ELENDİ (5 dk'dan kısa)"
-        yeni = len(c)
+        durum, yeni = "ELENDİ (5 dk'dan kısa)", len(c)
     elif c.isna().any().any():
-        durum = "ELENDİ (doldurulamayan eksik kaldı)"
-        yeni = len(c)
+        durum, yeni = "ELENDİ (doldurulamayan eksik kaldı)", len(c)
     else:
         c.to_csv(f"data/clean_B/{ad}", sep=";", index=False)
-        durum = "tamam"
-        yeni = len(c)
+        durum, yeni = "tamam", len(c)
     rapor.append({"dosya": ad, "ilk_satır": len(d), "temiz_satır": yeni, "durum": durum})
 
 r = pd.DataFrame(rapor)
