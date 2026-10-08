@@ -10,6 +10,7 @@ BAS_KES_DK = {                             # başında bozuk bölüm olan dosyal
 SON_KES_DK = {                             # bozuk bölümü başlayan dosyalar
     "TripB04.csv": 15.0,
     "TripB09.csv": 45.0,
+    "TripB35.csv": 22.5,                   # sürüş sonu, pompa kapanıyor
 }
 MIN_ROWS = 3000                            # 0,1 sn aralıkla 5 dakika
 
