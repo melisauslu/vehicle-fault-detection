@@ -18,6 +18,8 @@ def load_trip(path):
     df = pd.read_csv(path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.replace(r"\s+", " ", regex=True).str.strip()
     df.columns = df.columns.str.replace("Velocity [km/h]]]", "Velocity [km/h]", regex=False)
+    for bozuk in ["ï¿½", "\ufffd", "Â°"]:                # bozuk derece işaretlerini düzelt
+        df.columns = df.columns.str.replace(bozuk, "°", regex=False)
     cols = list(df.columns)
     seen = {}
     for i, c in enumerate(cols):

@@ -4,7 +4,7 @@ import pandas as pd
 def load_trip(path):
     df = pd.read_csv(path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.replace(r"\s+", " ", regex=True).str.strip()
-    # Aynı isimli kolonları ayır (Temperature Vent right iki kez geçiyor)
+    
     cols = list(df.columns)
     seen = {}
     for i, c in enumerate(cols):

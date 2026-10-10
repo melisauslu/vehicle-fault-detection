@@ -31,8 +31,8 @@ for f in files:
     d = load_trip(f)
     name = f.split("\\")[-1]
     na = d.isna().sum()
-    full_missing = na[na == len(d)].index.tolist()       # tamamen boş kolonlar
-    part_missing = na[(na > 0) & (na < len(d))]          # kısmen boş kolonlar
+    full_missing = na[na == len(d)].index.tolist()
+    part_missing = na[(na > 0) & (na < len(d))]
     rows.append({
         "dosya": name,
         "satır": len(d),
@@ -48,6 +48,6 @@ pd.set_option("display.width", 250)
 pd.set_option("display.max_colwidth", 80)
 print(summary.to_string(index=False))
 
-# Örnekleme aralığı kontrolü (ilk dosya)
+
 d0 = load_trip(files[0])
 print("Örnekleme aralığı (sn):", d0["Time [s]"].diff().median())
