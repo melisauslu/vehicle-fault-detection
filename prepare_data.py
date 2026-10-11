@@ -3,22 +3,22 @@ import os
 import shutil
 import pandas as pd
 
-BASLANGIC_KES_SN = 30                      # her sürüşün ilk 30 saniyesi atılır
-BAS_KES_DK = {                             # başında bozuk bölüm olan dosyalar
+BASLANGIC_KES_SN = 30
+BAS_KES_DK = {
     "TripB02.csv": 3.5,
 }
-SON_KES_DK = {                             # bozuk bölümü başlayan dosyalar
+SON_KES_DK = {
     "TripB04.csv": 15.0,
     "TripB09.csv": 45.0,
-    "TripB35.csv": 22.5,                   # sürüş sonu, pompa kapanıyor
+    "TripB35.csv": 22.5,
 }
-MIN_ROWS = 3000                            # 0,1 sn aralıkla 5 dakika
+MIN_ROWS = 3000
 
 def load_trip(path):
     df = pd.read_csv(path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.replace(r"\s+", " ", regex=True).str.strip()
     df.columns = df.columns.str.replace("Velocity [km/h]]]", "Velocity [km/h]", regex=False)
-    for bozuk in ["ï¿½", "\ufffd", "Â°"]:                # bozuk derece işaretlerini düzelt
+    for bozuk in ["ï¿½", "\ufffd", "Â°"]:
         df.columns = df.columns.str.replace(bozuk, "°", regex=False)
     cols = list(df.columns)
     seen = {}
@@ -30,24 +30,24 @@ def load_trip(path):
     return df
 
 def clean_trip(d, ad):
-    ok = ~d.isna().any(axis=1)             # satırda hiç eksik yoksa True
+    ok = ~d.isna().any(axis=1)
     if not ok.any():
         return None
     first = ok.idxmax()
     last = ok[::-1].idxmax()
-    d = d.loc[first:last].copy()           # baş ve sondaki boşları kes
-    d = d.interpolate(limit=50)            # ortadaki küçük boşlukları doldur
+    d = d.loc[first:last].copy()
+    d = d.interpolate(limit=50)
 
     bas = max(BASLANGIC_KES_SN, BAS_KES_DK.get(ad, 0) * 60)
-    d = d[d["Time [s]"] >= bas]                            # başlangıç etkisini / bozuk başı at
+    d = d[d["Time [s]"] >= bas]
     if ad in SON_KES_DK:
-        d = d[d["Time [s]"] <= SON_KES_DK[ad] * 60]        # bozuk sonu at
+        d = d[d["Time [s]"] <= SON_KES_DK[ad] * 60]
     d = d.reset_index(drop=True)
     if len(d) > 0:
-        d["Time [s]"] = (d["Time [s]"] - d["Time [s]"].iloc[0]).round(1)   # zamanı 0'dan başlat
+        d["Time [s]"] = (d["Time [s]"] - d["Time [s]"].iloc[0]).round(1)
     return d
 
-shutil.rmtree("data/clean_B", ignore_errors=True)          # eski çıktıları temizle
+shutil.rmtree("data/clean_B", ignore_errors=True)
 os.makedirs("data/clean_B")
 
 rapor = []

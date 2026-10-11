@@ -31,7 +31,6 @@ for f in files:
         "ısıtıcı V>450": int((d["Heater Voltage [V]"] > 450).sum()),
         "ısıtıcı P>10kW": int((d["Heating Power LIN [W]"] > 10000).sum()),
         "gaz>100": int((d["Throttle [%]"] > 100).sum()),
-        "bat.sıcaklık=-1": int((d["Battery Temperature [°C]"] == -1).sum()),
         "debi<-100": int(maske.sum()),
         "ilk debi<-100 satırı": int(maske.idxmax()) if maske.any() else -1,
     })
