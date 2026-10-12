@@ -29,7 +29,7 @@ for f in sorted(glob.glob("data/clean_B/*.csv")):
         ("debi < -100", d[debi] < -100),
     ]:
         for s, e in runs(maske):
-            if e - s + 1 >= 100:            # en az 10 saniye süren bölümler
+            if e - s + 1 >= 100:
                 uzun.append(f"{ad_kolon}: dk {t[s]:.1f} - {t[e]:.1f} ({e - s + 1} satır)")
     if uzun:
         print(ad, f"(toplam {t.iloc[-1]:.1f} dk)")

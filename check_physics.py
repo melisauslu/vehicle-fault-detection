@@ -5,7 +5,7 @@ import pandas as pd
 files = sorted(glob.glob("data/clean_B/*.csv"))
 HIZ = "Velocity [km/h]"
 
-# Adım testi (WMO step test): 0,1 sn'de izin verilen en büyük değişim
+# Adım testi (WMO step test):0,1 sn'de izin verilen en büyük değişim
 ADIM_SINIRI = {
     "Velocity [km/h]": 5.0,                         # en sert fren ~3,3 km/h / 0,1 sn
     "SoC [%]": 1.0,                                 # 400 A'de bile ~%0,02 / 0,1 sn

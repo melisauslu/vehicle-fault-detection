@@ -9,7 +9,7 @@ def oku(path):
         df.columns = df.columns.str.replace(bozuk, "°", regex=False)
     return df
 
-# kontrol edilecek sinyaller: kısa ad -> kolonun adında geçen ifade
+
 SINYALLER = {
     "hız": "Velocity",
     "bat.V": "Battery Voltage",

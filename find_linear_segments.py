@@ -4,11 +4,11 @@ import pandas as pd
 
 KOLONLAR = ["Battery Voltage [V]", "Battery Current [A]",
             "Heater Voltage [V]", "Heating Power LIN [W]"]
-MIN_SURE_SN = 10                           # en az 10 sn düz giderse şüpheli
+MIN_SURE_SN = 10
 
 def duz_bolumler(s):
     fark = s.diff()
-    cozunurluk = fark.abs()[fark.abs() > 0].min()          # sinyalin en küçük adımı
+    cozunurluk = fark.abs()[fark.abs() > 0].min()
     duz = (fark.diff().abs() <= cozunurluk * 1.01) & (fark.abs() > 0)
     grup = (duz != duz.shift()).cumsum()
     for _, g in duz.groupby(grup):

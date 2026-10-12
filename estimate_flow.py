@@ -6,12 +6,12 @@ d = pd.concat([pd.read_csv(f, sep=";", encoding="utf-8") for f in files], ignore
 
 guc = "Heating Power LIN [W]"
 debi = "Coolant Volume Flow +500 [l/h]"
-giris = "Temperature Coolant Heater Inlet [°C]"     # ısıtıcıya giren sıvı sıcaklığı
-cikis = "Temperature Coolant Heater Outlet [°C]"    # ısıtıcıdan çıkan sıvı sıcaklığı
+giris = "Temperature Coolant Heater Inlet [°C]"
+cikis = "Temperature Coolant Heater Outlet [°C]"
 
 dT = d[cikis] - d[giris]
-secim = (d[guc] > 1000) & (dT > 3)          # ısıtıcı açık ve sıvı belirgin ısınıyor
-tahmin = d.loc[secim, guc] / dT[secim]      # debi ≈ güç / sıcaklık artışı
+secim = (d[guc] > 1000) & (dT > 3)
+tahmin = d.loc[secim, guc] / dT[secim]
 
 print("Toplam satır:", len(d))
 print("Kullanılan satır sayısı:", secim.sum())
