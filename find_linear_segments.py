@@ -6,6 +6,10 @@ KOLONLAR = ["Battery Voltage [V]", "Battery Current [A]",
             "Heater Voltage [V]", "Heating Power LIN [W]"]
 MIN_SURE_SN = 10
 
+"""
+Bu yönteme matematikte sonlu farklar yöntemi (finite differences) denir;türevleri veri üzerinde yaklaşık olarak hesaplamanın standart yolu. 
+Bütün sayısal analiz ders kitaplarında var.
+"""
 def duz_bolumler(s):
     fark = s.diff()
     cozunurluk = fark.abs()[fark.abs() > 0].min()
