@@ -68,3 +68,22 @@ plt.tight_layout()
 os.makedirs("reports", exist_ok=True)
 plt.savefig("reports/batarya_direnc.png", dpi=120)
 plt.show()
+
+from scipy import stats
+
+print("\n=== 4) Korelasyonun güvenilirliği ===")
+x, y = r["bat_sıcaklık"], r["R_ohm"]
+n = len(r)
+
+pr, pp = stats.pearsonr(x, y)
+sr, sp = stats.spearmanr(x, y)
+
+# %95 güven aralığı (Fisher z dönüşümü)
+z = np.arctanh(pr)
+se = 1 / np.sqrt(n - 3)
+alt, ust = np.tanh(z - 1.96 * se), np.tanh(z + 1.96 * se)
+
+print(f"Sürüş sayısı      : {n}")
+print(f"Pearson r         : {pr:.3f}   p = {pp:.1e}")
+print(f"%95 güven aralığı : [{alt:.3f}, {ust:.3f}]")
+print(f"Spearman ρ        : {sr:.3f}   p = {sp:.1e}")
