@@ -11,6 +11,9 @@ from scipy.signal import lfilter
 # [Tez-O]  Otel ısı pompası tezi – ısı dengesi Q = ṁ·c_p·ΔT (Eq 4.26)
 # [Rint]   Steger 2022 (Eq 9), Ng 2009 – batarya modeli V = V₀(SoC) + R·I  (+ akım = şarj)
 # [Meckel] Meckel vd. – arıza başladıktan sonra kalıcıdır (§II.B)
+# [Grandjean] Grandjean vd. 2018, Batteries 4(4) 49, §1 – "EOL is commonly defined as being attained when the
+#          battery internal resistance has doubled" (hibrit araçlar için; kaynağı [Farmann] Farmann vd. 2015,
+#          J. Power Sources 281, 114–130). Aynı yerde: direnç artışı gücü sınırlar ve ek ısı üretir [Vetter 2005]
 #
 # Her hesabın yanında üç etiketten biri var:
 #   KAYNAKTAN       : formül kaynakta aynen var
@@ -310,3 +313,64 @@ def pompa_debi_kaybi(s, n0, eta, p):
     if p["debi_olculen"]:
         y["debi"][n0:] = (s["debi"][n0:] + 500) * eta - 500
     return y
+
+
+# ---------------------------------------------------------------------------
+# 5) BATARYA İÇ DİRENÇ ARTIŞI (bataryanın kendisinin yaşlanması)
+# ---------------------------------------------------------------------------
+
+def batarya_direnc_artisi(s, n0, k, p):
+    # BATARYA ARIZASI: sensör değil bataryanın kendisi yaşlanmış → iç direnci k katına çıkmış: R' = k·R
+    # Şiddet k = 1.33 ve 2:
+    #   k = 2    KAYNAKTAN [Grandjean §1, Farmann'a atfen]: direnç iki katına çıkınca ömür sonu (hibrit araç ölçütü;
+    #            i3 tam elektrikli olduğu için tezde "ağır yaşlanma senaryosu" olarak sunulacak)
+    #   k = 1.33 BİZİM KARARIMIZ: Yue'nin η = 0.75 şiddeti dirence R' = R/η olarak uygulanmış hâli
+    #            (η = 0.5 → R/0.5 = 2R, yani Grandjean'ın ömür sonu ile aynı nokta)
+    # s: sinyaller (V_bat, I_bat, SoC, V_isi, I_isi, P_isi), p: veriden sabitler (R: o sürüşün direnci, b, Q, hv_ortak)
+    #
+    # NE DEĞİŞİR: batarya gerilimi, batarya akımı, SoC, (aynı hattaysa) ısıtıcı gerilimi ve akımı
+    # NE DEĞİŞMEZ: ısıtıcı gücü (ısıtıcı istenen gücü vermeye devam eder), su sıcaklıkları, hız
+    # SINIRLILIK:
+    #   - Batarya sıcaklığı: ek ısı ΔR·I² [Tez-B Eq 3.10, Grandjean §1] gerçekte bataryayı ısıtır; bataryanın ısı
+    #     kapasitesi C verimizde olmadığı için değiştirilmez
+    #   - BMS'in güç sınırlaması (derating) modellenmez; istenen güç verilemiyorsa batarya en yüksek gücünde tutulur
+    #   - Rint modeli şarj ve deşarjda aynı direnci kullanır (gerçekte şarjda %5–20 farklı olabilir [Grandjean §3.3.3])
+    y = {kk: v.astype(float).copy() for kk, v in s.items()}
+    R, R2 = p["R"], k * p["R"]
+    V, I = s["V_bat"][n0:], s["I_bat"][n0:]
+
+    # 1) Boştaki gerilim — KAYNAKTAN [Rint]: V = V₀ + R·I  →  V₀ = V − R·I  (R bu sürüşün kendi verisinden)
+    V0 = V - R * I
+    # 2) Bataryadan istenen güç DEĞİŞMEZ: motor ve ısıtıcı aynı gücü ister — TÜRETME [Tez-B Eq 3.8]: P = V·I
+    P = V * I            # + şarj, − deşarj (veride + akım = şarj; R > 0 çıktığı için doğrulandı)
+
+    def akim(V0):
+        # TÜRETME [Rint + Tez-B Eq 3.8]: V' = V₀ + R'·I'  ve  V'·I' = P  →  R'·I'² + V₀·I' − P = 0
+        #   I' = (−V₀ + √(V₀² + 4·R'·P)) / (2·R')   (P = 0 iken I' = 0 veren fiziksel kök)
+        # Kök içi negatifse batarya o gücü veremez (yaşlı batarya gücü sınırlar [Grandjean §1]);
+        # bu durumda verebileceği en yüksek güçteki akım alınır: I' = −V₀ / (2·R')
+        ic = V0 ** 2 + 4 * R2 * P
+        return (-V0 + np.sqrt(np.clip(ic, 0, None))) / (2 * R2), int(np.sum(ic < 0))
+
+    # 3) Yeni akım ve SoC — iki adımda: önce SoC değişimi ihmal edilerek akım bulunur, sonra
+    #    SoC farkının boştaki gerilime etkisi (b·ΔSoC) eklenip akım yeniden hesaplanır
+    #    TÜRETME [Tez-B Eq 3.26]: ΔSoC = ∫ΔI dt / Q ;  [Rint]: V₀ SoC'ye bağlı → ΔV₀ = b·ΔSoC
+    I2, _ = akim(V0)
+    dSoC = 100 * np.cumsum(I2 - I) * DT / 3600 / p["Q"]
+    I2, sinirli = akim(V0 + p["b"] * dSoC)
+    dSoC = 100 * np.cumsum(I2 - I) * DT / 3600 / p["Q"]
+    V2 = V0 + p["b"] * dSoC + R2 * I2
+    # Örnek: R = 0.12 → R' = 0.24 ohm, I = −100 A, V = 360 V → V₀ = 372 V, P = −36 kW
+    #        I' = (−372 + √(372² − 4·0.24·36000)) / 0.48 ≈ −103.7 A,  V' = 372 − 0.24·103.7 ≈ 347.1 V
+    #        → gerilim ~12.9 V daha düşük, akım ~%3.7 daha büyük (aynı 36 kW için)
+    y["V_bat"][n0:] = V2
+    y["I_bat"][n0:] = I2
+    y["SoC"][n0:] = s["SoC"][n0:] + dSoC
+
+    # 4) Isıtıcı — aynı yüksek gerilim hattındaysa (veride kontrol edilir) gerilimi bataryayla birlikte değişir;
+    #    ısıtıcı aynı gücü verdiği için akımı TÜRETME [Tez-B Eq 3.8]: I_ısıtıcı' = P_ısıtıcı / V_ısıtıcı'
+    if p["hv_ortak"]:
+        Vi = s["V_isi"][n0:] + (V2 - V)
+        y["V_isi"][n0:] = Vi
+        y["I_isi"][n0:] = np.where(Vi > 1, s["P_isi"][n0:] / np.where(Vi > 1, Vi, 1), s["I_isi"][n0:])
+    return y, sinirli

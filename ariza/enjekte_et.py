@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from arizalar import (SENSOR_ARIZALARI, SADECE_ORAN_OLCEKLI, aralik, sensor_arizasi, olcum_ozellikleri, olcum_zinciri,
                       ic_direnc, ocv_egimi, kapasite, isitici_olcegi, isitici_zaman_sabiti, isitici_guc_kaybi,
-                      pompa_debi_kaybi)
+                      pompa_debi_kaybi, batarya_direnc_artisi)
 
 ANA_KLASOR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMIZ = os.path.join(ANA_KLASOR, "data", "clean_B")
@@ -33,7 +33,12 @@ POMPA_DEGISEN = ["T_cikis", "debi"]
 # Veri seti açıklamasında sütunun "ölçülen debi" olduğu yazıyorsa True yap
 DEBI_OLCULEN = False
 
-ARIZA_TIPLERI = SENSOR_ARIZALARI + ["isitici_guc_kaybi", "pompa_debi_kaybi"]
+# batarya iç direnç arızasında kullanılan sinyaller; ısıtıcı gücü yalnızca ısıtıcı akımını hesaplamak için
+BAT_SUTUN = {"V_bat": V_BAT, "I_bat": I_BAT, "SoC": SOC, "V_isi": ISI_V, "I_isi": ISI_I, "P_isi": ISI_P}
+# Direnç artışı k — KAYNAKTAN [Grandjean]: k = 2 ömür sonu; k = 1.33 BİZİM KARARIMIZ (Yue η = 0.75 → R/η)
+K_DEGERLERI = [4 / 3, 2.0]
+
+ARIZA_TIPLERI = SENSOR_ARIZALARI + ["isitici_guc_kaybi", "pompa_debi_kaybi", "batarya_direnc_artisi"]
 
 # BİZİM KARARIMIZ (fiziksel gerekçe arizalar.py'de): kazanç ve tam arıza yalnızca gerilim ve akıma
 TUM_SENSORLER = [V_BAT, I_BAT, T_BAT]
@@ -125,7 +130,8 @@ shutil.rmtree(CIKTI, ignore_errors=True)
 os.makedirs(CIKTI)
 os.makedirs(RAPOR, exist_ok=True)
 
-liste, ornekler, isitici_ornek, pompa_ornek = [], [], None, None
+liste, ornekler, isitici_ornek, pompa_ornek, batarya_ornek = [], [], None, None, None
+guc_sinirli = 0          # yaşlı bataryanın istenen gücü veremediği satır sayısı
 for ad, d in veri.items():
     N = len(d)
 
@@ -159,6 +165,19 @@ for ad, d in veri.items():
             degisen = CIKIS
             if ad == ORNEK_SURUS:
                 pompa_ornek = (eta, n0, d, a)
+        elif tip == "batarya_direnc_artisi":
+            kat = float(rng.choice(K_DEGERLERI))
+            p = {"R": R_surus[ad], "b": b, "Q": Q, "hv_ortak": hv_ortak}
+            yeni, sinirli = batarya_direnc_artisi({k: d[c].to_numpy() for k, c in BAT_SUTUN.items()}, n0, kat, p)
+            guc_sinirli += sinirli
+            for k, c in BAT_SUTUN.items():
+                if not np.array_equal(yeni[k], d[c].to_numpy()):     # değişmeyen sütuna dokunulmaz
+                    a[c] = olcum_zinciri(yeni[k], n0, *OLCUM[c], REF[c])
+            # şiddet = direncin bağıl artışı (k − 1): 0.33 ya da 1.0
+            sinyal, siddet, ar = V_BAT, kat - 1, np.nan
+            degisen = V_BAT
+            if ad == ORNEK_SURUS:
+                batarya_ornek = (kat, n0, d, a)
         else:
             # BİZİM KARARIMIZ: arızalı sensör izin verilen sensörlerden rastgele seçilir
             sinyal = str(rng.choice(ORAN_SENSORLERI if tip in SADECE_ORAN_OLCEKLI else TUM_SENSORLER))
@@ -208,6 +227,8 @@ print(pd.crosstab(l["ariza_tipi"], l["grup"]).to_string())
 print("\nArıza tipi × sensör:")
 print(pd.crosstab(l["ariza_tipi"], l["ariza_sinyali"]).to_string())
 print("\nArızalı satır oranı (ortalama):", round(l["arizali_oran"].mean(), 2))
+print(f"Batarya direnç arızasında istenen gücün verilemediği satır: {guc_sinirli} "
+      f"(bu satırlarda batarya en yüksek gücünde tutuldu; BMS güç sınırlaması modellenmedi)")
 print("\nArızalı satırlarda sinyalin gerçekten değiştiği oran (arıza tipi × sensör, ortalama):")
 print(l.pivot_table(index="ariza_tipi", columns="ariza_sinyali", values="degisen_oran", aggfunc="mean").round(2).to_string())
 gorunmez = l[~l["kullanilabilir"]]
@@ -255,6 +276,16 @@ if ornekler:
     ax[-1].set_xlabel("Dakika (kesikli çizgi = arızanın başladığı an)")
     plt.tight_layout()
     plt.savefig(os.path.join(RAPOR, f"{ORNEK_SURUS[:-4]}_pompa_ayrinti.png"), dpi=120)
+
+    # Batarya iç direnç arızasında birlikte değişen sinyaller (ısıtıcı gücü değişmez)
+    kat, n0, d, a = batarya_ornek
+    fig, ax = plt.subplots(len(BAT_SUTUN), 1, figsize=(12, 2.2 * len(BAT_SUTUN)), sharex=True)
+    t = np.arange(len(d)) * 0.1 / 60
+    for k, c in enumerate(BAT_SUTUN.values()):
+        ciz(ax[k], t, d[c], a[c], n0, f"{c}   (batarya iç direnç ×{kat:.2f})")
+    ax[-1].set_xlabel("Dakika (kesikli çizgi = arızanın başladığı an)")
+    plt.tight_layout()
+    plt.savefig(os.path.join(RAPOR, f"{ORNEK_SURUS[:-4]}_batarya_ayrinti.png"), dpi=120)
     plt.show()
 else:
     print(f"\n{ORNEK_SURUS} bulunamadı, grafik çizilmedi")
