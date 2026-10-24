@@ -25,6 +25,7 @@ from scipy.signal import lfilter
 
 DT = 0.1         # örnekleme aralığı [s] (check_data.py ile doğrulandı: 10 Hz)
 PENCERE = 5000   # KAYNAKTAN [Wang]: aralık son 500 s'den hesaplanır → 500 s / 0.1 s = 5000 satır
+SURUKLENME_S = 5000   # KAYNAKTAN [Wang §2.4]: sürüklenmede sapma 5000 s'de tam C olur (saniye, satır değil)
 
 SENSOR_ARIZALARI = ["surukleme", "sabit_kayma", "kazanc", "dogruluk_kaybi", "takilma", "tam_ariza"]
 
@@ -61,12 +62,12 @@ def sensor_arizasi(x, n0, tip, L, rng):
     n = np.arange(len(x) - n0)          # arıza başladığından beri geçen satır sayısı: 0, 1, 2, ...
 
     if tip == "surukleme":
-        # KAYNAKTAN [Wang]: x̂ = x + k·t,  k = L·aralık/5000
-        # BİZİM KARARIMIZ: t yerine "arıza başladığından beri geçen satır" → t0'da sıçrama olmaz
-        # SINIRLILIK: gerçek sensör sürüklenmesi aylar sürer; burada model fark edebilsin diye
-        # 500 s'de L·aralık kadar hızlandırılmıştır (Wang'ın ölçeği)
-        # Örnek: aralık 10 V, L 0.2 → k = 0.0004 V/satır → 500 s (5000 satır) sonra +2 V
-        y[n0:] += (L * a / PENCERE) * n
+        # KAYNAKTAN [Wang §2.3.1, §2.4]: x̂ = x + k·t,  k = L·aralık/5000  [birim/s] → sapma 5000 s'de C olur
+        # BİZİM KARARIMIZ: t yerine "arıza başladığından beri geçen süre" → t0'da sıçrama olmaz
+        # Satır başına k: k·DT (verimiz 10 Hz)
+        # Örnek: aralık 10 V, L 0.2 → k = 0.0004 V/s → 25 dk (1500 s) sonra +0.6 V, 5000 s sonra +2 V
+        # Not: sürüşler ~25 dk olduğu için sapma C'ye ulaşmaz; yavaş sürüklenme gerçekte de zor yakalanır
+        y[n0:] += (L * a / SURUKLENME_S) * (n * DT)
     elif tip == "sabit_kayma":
         # KAYNAKTAN [Wang]: x̂ = x + C,  C = L·aralık
         # Örnek: aralık 10 V, L 0.2 → C = 2 V → 355 V olan gerilim 357 V okunur
