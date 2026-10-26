@@ -13,7 +13,7 @@ DT = 0.1
 
 
 def veriyi_oku():
-    oz = pd.read_csv(os.path.join(VERI, "pencereler_ozellik.csv"), sep=";")
+    oz = pd.read_csv(os.path.join(VERI, "pencereler_ozellik.csv"), sep=";", low_memory=False)
     with open(os.path.join(VERI, "bilgi.json"), encoding="utf-8") as f:
         bilgi = json.load(f)
     return oz, bilgi
