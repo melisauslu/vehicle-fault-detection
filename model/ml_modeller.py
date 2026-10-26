@@ -29,8 +29,8 @@ OZELLIK_SETLERI = {
     "ham+fizik": ["ham_istatistik", "fizik_dusuk"],
     "ham+fizik+riskli": ["ham_istatistik", "fizik_dusuk", "fizik_riskli"],
 }
-DENETIMLI = ["RandomForest"]     # etiketli: arıza var mı + hangi arıza (10 sınıf)
-DENETIMSIZ = []                   # yalnızca sağlam pencerelerle eğitilir: arıza var mı
+DENETIMLI = ["RandomForest", "XGBoost", "SVM"]
+DENETIMSIZ = ["IsolationForest"]
 SEED = 42
 
 # BİZİM KARARIMIZ: hiperparametre ayarı YAPILMADI; yaygın varsayılanlar sabit tutuldu.
