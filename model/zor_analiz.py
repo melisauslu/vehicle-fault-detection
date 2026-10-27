@@ -8,7 +8,7 @@ from ortak import ANA_KLASOR
 
 # Zor arızaları İYİLEŞTİRMEDEN ÖNCE TEŞHİS: model nerede hata yapıyor?
 # Yalnızca çapraz doğrulama tahminlerine bakar (test sürüşlerine dokunmaz).
-MODEL = "RandomForest"
+MODEL = "XGBoost"
 SET = "ham+fizik+gecmis"    # ana sonuç seti (uzun geçmişten önceyle karşılaştırmak için: "ham+fizik")
 ZOR = ["surukleme", "sabit_kayma", "takilma", "kazanc"]
 
