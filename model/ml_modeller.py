@@ -29,9 +29,15 @@ OZELLIK_SETLERI = {
     "ham+fizik": ["ham_istatistik", "fizik_dusuk"],
     "ham+fizik+riskli": ["ham_istatistik", "fizik_dusuk", "fizik_riskli"],
 }
-DENETIMLI = ["RandomForest", "XGBoost", "SVM"]
-DENETIMSIZ = ["IsolationForest"]
+DENETIMLI = ["RandomForest", "XGBoost", "SVM"]     # etiketli: arıza var mı + hangi arıza (10 sınıf)
+DENETIMSIZ = ["IsolationForest"]                   # yalnızca sağlam pencerelerle eğitilir: arıza var mı
 SEED = 42
+
+# Sinyal seçimi deneyi: buraya yazılan sensörler modelden çıkarılır (kendi istatistikleri + onları kullanan
+# fizik kalıntıları). Boş liste = bütün sensörler. Adaylar sinyal_onemi.py ile belirlenir; karar çapraz
+# doğrulamayla verilir, son testte doğrulanır.
+# Örnek: ["Velocity [km/h]", "Ambient Temperature [°C]", "Heater Current [A]"]
+CIKARILAN_SINYALLER = []
 
 # BİZİM KARARIMIZ: hiperparametre ayarı YAPILMADI; yaygın varsayılanlar sabit tutuldu.
 # Böylece hiçbir ayar doğrulama/test sonucuna bakılarak seçilmedi (sızıntı kuralı 5).
@@ -94,6 +100,8 @@ if SON_TEST:
     print("!!! SON TEST: 28 eğitim sürüşüyle eğitilip 7 test sürüşünde ölçülüyor !!!\n")
 else:
     bolme_listesi = [(f"kat{i}", tr, va) for i, (tr, va) in enumerate(cv)]
+if CIKARILAN_SINYALLER:
+    print(f"Modelden çıkarılan sinyaller: {CIKARILAN_SINYALLER}\n")
 
 os.makedirs(RAPOR, exist_ok=True)
 sonuclar, sinif_f1, tahminler, onem = [], [], [], []
@@ -108,7 +116,7 @@ for bolme, egitim, dogrulama in bolme_listesi:
           f"doğrulama {dogrulama.sum()} pencere ({o.loc[dogrulama, 'surus'].nunique()} sürüş) ===")
 
     for set_adi, gruplar in OZELLIK_SETLERI.items():
-        kolonlar = ozellik_listesi(bilgi, gruplar)
+        kolonlar = ozellik_listesi(bilgi, gruplar, CIKARILAN_SINYALLER)
         X_tr, X_va = o.loc[egitim, kolonlar], o.loc[dogrulama, kolonlar]
 
         # ---- DENETİMLİ: 10 sınıf (sağlam + 9 arıza); "arıza var mı" sonucu buradan türetilir ----

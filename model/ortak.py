@@ -53,6 +53,31 @@ def fizik_ekle(oz, sabitler):
     return o
 
 
-def ozellik_listesi(bilgi, gruplar):
+# Fizik kalıntısı → hesaplanırken kullandığı sensörler (tanımlar veri_hazirla.py'de).
+# Bir sensör çıkarılınca/karıştırılınca onu kullanan kalıntılar da çıkar/karışır (o sensör yoksa hesaplanamazlar).
+V_BAT, I_BAT, T_BAT, SOC = "Battery Voltage [V]", "Battery Current [A]", "Battery Temperature [°C]", "SoC [%]"
+ISI_P, ISTENEN = "Heating Power LIN [W]", "Requested Heating Power [W]"
+ISI_V, ISI_I = "Heater Voltage [V]", "Heater Current [A]"
+GIRIS, CIKIS = "Temperature Coolant Heater Inlet [°C]", "Temperature Coolant Heater Outlet [°C]"
+KALINTI_SENSORLERI = {
+    "bat_guc": [V_BAT, I_BAT],
+    "gerilim_farki": [ISI_V, V_BAT],
+    "isitici_VI_farki": [ISI_V, ISI_I, ISI_P],
+    "isitici_guc_farki": [ISTENEN, ISI_P],
+    "su_isinmasi": [CIKIS, GIRIS],
+    "soc_farki": [SOC, I_BAT],
+    "su_isinmasi_farki": [CIKIS, GIRIS, ISI_P],
+    "direnc_orani": [V_BAT, I_BAT, T_BAT],
+}
+
+
+def sensoru_kullanir(kolon, sensorler):
+    # Bu özellik verilen sensörlerden birinin istatistiği mi, ya da onlardan birini kullanan bir kalıntı mı?
+    kok = kolon.split("__")[0]
+    return kok in sensorler or any(s in sensorler for s in KALINTI_SENSORLERI.get(kok, []))
+
+
+def ozellik_listesi(bilgi, gruplar, cikarilan=()):
     # gruplar: ["ham_istatistik"], ["ham_istatistik", "fizik_dusuk"], ya da üçü birden (+ "fizik_riskli")
-    return [c for g in gruplar for c in bilgi["ozellik_gruplari"][g]]
+    # cikarilan: modelden çıkarılacak sensörler (kendi istatistikleri + onları kullanan kalıntılar çıkar)
+    return [c for g in gruplar for c in bilgi["ozellik_gruplari"][g] if not sensoru_kullanir(c, cikarilan)]

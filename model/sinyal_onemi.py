@@ -11,7 +11,7 @@ from sklearn.utils.class_weight import compute_sample_weight
 from xgboost import XGBClassifier
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ortak import ANA_KLASOR, veriyi_oku, bolmeler, kat_sabitleri, fizik_ekle, ozellik_listesi
+from ortak import ANA_KLASOR, veriyi_oku, bolmeler, kat_sabitleri, fizik_ekle, ozellik_listesi, sensoru_kullanir
 
 RAPOR = os.path.join(ANA_KLASOR, "reports", "model")
 
@@ -35,21 +35,6 @@ OZELLIK_GRUPLARI = ["ham_istatistik", "fizik_dusuk"]   # ana sonuç seti: ham+fi
 TEKRAR = 3                  # her sensör kaç kez karıştırılıp ortalaması alınır
 SEED = 42
 
-V_BAT, I_BAT, T_BAT, SOC = "Battery Voltage [V]", "Battery Current [A]", "Battery Temperature [°C]", "SoC [%]"
-ISI_P, ISTENEN = "Heating Power LIN [W]", "Requested Heating Power [W]"
-ISI_V, ISI_I = "Heater Voltage [V]", "Heater Current [A]"
-GIRIS, CIKIS = "Temperature Coolant Heater Inlet [°C]", "Temperature Coolant Heater Outlet [°C]"
-# Fizik kalıntısı → hesaplanırken kullandığı sensörler (tanımlar veri_hazirla.py'de).
-# Bir sensör karıştırılınca onu kullanan kalıntılar da karıştırılır.
-KALINTI_SENSORLERI = {
-    "bat_guc": [V_BAT, I_BAT],
-    "gerilim_farki": [ISI_V, V_BAT],
-    "isitici_VI_farki": [ISI_V, ISI_I, ISI_P],
-    "isitici_guc_farki": [ISTENEN, ISI_P],
-    "su_isinmasi": [CIKIS, GIRIS],
-    "soc_farki": [SOC, I_BAT],
-}
-
 
 def model_kur(ad):
     if ad == "RandomForest":
@@ -66,11 +51,7 @@ siniflar = sorted(oz["ariza_tipi"].unique())
 kolonlar = ozellik_listesi(bilgi, OZELLIK_GRUPLARI)
 
 # Her sensör için karıştırılacak sütunlar: kendi istatistikleri + onu kullanan kalıntılar
-sensorler = bilgi["ham_kanallar"]
-gruplar = {}
-for s in sensorler:
-    gruplar[s] = [c for c in kolonlar
-                  if c.split("__")[0] == s or s in KALINTI_SENSORLERI.get(c.split("__")[0], [])]
+gruplar = {s: [c for c in kolonlar if sensoru_kullanir(c, [s])] for s in bilgi["ham_kanallar"]}
 
 rng = np.random.default_rng(SEED)
 satirlar = []
