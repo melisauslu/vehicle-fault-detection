@@ -9,7 +9,7 @@ from ortak import ANA_KLASOR
 # Zor arızaları İYİLEŞTİRMEDEN ÖNCE TEŞHİS: model nerede hata yapıyor?
 # Yalnızca çapraz doğrulama tahminlerine bakar (test sürüşlerine dokunmaz).
 MODEL = "RandomForest"
-SET = "ham+fizik"           # ana sonuç seti
+SET = "ham+fizik+gecmis"    # ana sonuç seti (uzun geçmişten önceyle karşılaştırmak için: "ham+fizik")
 ZOR = ["surukleme", "sabit_kayma", "takilma", "kazanc"]
 
 t = pd.read_csv(os.path.join(ANA_KLASOR, "data", "model", "ml_tahminler.csv"), sep=";", low_memory=False)

@@ -31,7 +31,8 @@ RAPOR = os.path.join(ANA_KLASOR, "reports", "model")
 # AYARLAR
 # ============================================================================
 MODEL = "XGBoost"           # "XGBoost" ya da "RandomForest" (ayarlar ml_modeller.py ile aynı)
-OZELLIK_GRUPLARI = ["ham_istatistik", "fizik_dusuk"]   # ana sonuç seti: ham+fizik
+OZELLIK_GRUPLARI = ["ham_istatistik", "fizik_dusuk", "uzun_gecmis"]   # ana sonuç seti
+SET_ADI = "ham+fizik+gecmis"
 TEKRAR = 3                  # her sensör kaç kez karıştırılıp ortalaması alınır
 SEED = 42
 
@@ -61,13 +62,14 @@ for k, (egitim, dogrulama) in enumerate(cv):
     y_tr, y_va = o.loc[egitim, "ariza_tipi"].to_numpy(), o.loc[dogrulama, "ariza_tipi"].to_numpy()
     model = model_kur(MODEL)
     if MODEL == "XGBoost":
-        model.fit(X_tr, np.searchsorted(siniflar, y_tr), sample_weight=compute_sample_weight("balanced", y_tr))
+        egitim_siniflari = np.unique(y_tr)                    # XGBoost sınıfları 0..k−1 sayıları ister
+        model.fit(X_tr, np.searchsorted(egitim_siniflari, y_tr), sample_weight=compute_sample_weight("balanced", y_tr))
     else:
         model.fit(X_tr, y_tr)
 
     def tahmin(X):
         t = model.predict(X)
-        return np.array(siniflar)[t] if MODEL == "XGBoost" else t
+        return egitim_siniflari[t] if MODEL == "XGBoost" else t
 
     def skorlar(t):
         return (f1_score(y_va, t, labels=siniflar, average="macro", zero_division=0),
@@ -91,7 +93,7 @@ ozet = (kat_ort.groupby("sensor")["macro_dusus"].agg(["mean", "std"])
 sinif = kat_ort.groupby("sensor")[siniflar].mean().loc[ozet.index]
 
 pd.set_option("display.width", 250)
-print(f"\n=== {MODEL}, ham+fizik — sensör karıştırılınca macro-F1 ne kadar düşüyor? ({len(cv)} katın ortalaması) ===")
+print(f"\n=== {MODEL}, {SET_ADI} — sensör karıştırılınca macro-F1 ne kadar düşüyor? ({len(cv)} katın ortalaması) ===")
 print("    (büyük düşüş = model bu sensöre çok güveniyor; ~0 = bu sensör olmadan da aynı başarı)")
 print(ozet.round(3).to_string())
 print("\n=== Arıza tipine göre F1 düşüşü (hangi sensör hangi arıza için önemli?) ===")
@@ -108,7 +110,7 @@ ax.barh(y, ozet["mean"], xerr=ozet["std"], color="#2a6fbb", height=0.6,
         error_kw={"ecolor": "#555555", "elinewidth": 1, "capsize": 2})
 ax.set_yticks(y, ozet.index, fontsize=8)
 ax.set_xlabel("macro-F1 düşüşü (sensör karıştırılınca)")
-ax.set_title(f"Sensör önemi — {MODEL}, ham+fizik ({len(cv)} kat ortalaması ± std)", fontsize=10)
+ax.set_title(f"Sensör önemi — {MODEL}, {SET_ADI} ({len(cv)} kat ortalaması ± std)", fontsize=10)
 ax.axvline(0, color="#999999", linewidth=0.8)
 ax.grid(axis="x", color="#e5e5e5", linewidth=0.6)
 ax.set_axisbelow(True)
@@ -129,7 +131,7 @@ for i in range(deger.shape[0]):
         if deger[i, j] >= 0.01:
             ax.text(j, i, f"{deger[i, j]:.2f}", ha="center", va="center", fontsize=7,
                     color="white" if deger[i, j] > 0.6 * deger.max() else "black")
-ax.set_title(f"Hangi sensör hangi arıza için önemli? (F1 düşüşü) — {MODEL}, ham+fizik", fontsize=10)
+ax.set_title(f"Hangi sensör hangi arıza için önemli? (F1 düşüşü) — {MODEL}, {SET_ADI}", fontsize=10)
 fig.colorbar(im, ax=ax, fraction=0.03, label="F1 düşüşü")
 plt.tight_layout()
 plt.savefig(os.path.join(RAPOR, f"sinyal_onemi_sinif_{MODEL}.png"), dpi=120)

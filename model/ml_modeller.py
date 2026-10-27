@@ -23,12 +23,16 @@ TAHMIN = os.path.join(ANA_KLASOR, "data", "model")
 # ============================================================================
 # AYARLAR
 # ============================================================================
-# Üç özellik seti (döngüsellik riskini ölçmek için ayrı ayrı denenir)
+# Dört özellik seti — her grubun katkısı aynı çalıştırmada ölçülür:
+#   fizik kalıntılarının katkısı (ham → ham+fizik), uzun geçmişin katkısı (→ +gecmis),
+#   döngüsellik riski (→ +riskli; ana sonuç DEĞİL, üst sınır)
 OZELLIK_SETLERI = {
     "ham": ["ham_istatistik"],
     "ham+fizik": ["ham_istatistik", "fizik_dusuk"],
-    "ham+fizik+riskli": ["ham_istatistik", "fizik_dusuk", "fizik_riskli"],
+    "ham+fizik+gecmis": ["ham_istatistik", "fizik_dusuk", "uzun_gecmis"],
+    "ham+fizik+gecmis+riskli": ["ham_istatistik", "fizik_dusuk", "uzun_gecmis", "fizik_riskli"],
 }
+ANA_SET = "ham+fizik+gecmis"     # özellik önemi bu set için yazdırılır
 DENETIMLI = ["RandomForest", "XGBoost", "SVM"]     # etiketli: arıza var mı + hangi arıza (10 sınıf)
 DENETIMSIZ = ["IsolationForest"]                   # yalnızca sağlam pencerelerle eğitilir: arıza var mı
 SEED = 42
@@ -94,7 +98,6 @@ oz, bilgi = veriyi_oku()
 cv, son = bolmeler(oz)
 adim_s = bilgi["adim_satir"] * 0.1
 siniflar = sorted(oz["ariza_tipi"].unique())             # 10 sınıf: sağlam + 9 arıza tipi
-sinif_no = {s: i for i, s in enumerate(siniflar)}
 if SON_TEST:
     bolme_listesi = [("son_test", son[0], son[1])]
     print("!!! SON TEST: 28 eğitim sürüşüyle eğitilip 7 test sürüşünde ölçülüyor !!!\n")
@@ -128,7 +131,9 @@ for bolme, egitim, dogrulama in bolme_listesi:
                 model.fit(Xs, ys)
             elif ad == "XGBoost":
                 # XGBoost sütun adlarında "[ ]" kabul etmiyor → sayı dizisi olarak verilir (sıra aynı)
-                model.fit(X_tr.to_numpy(), np.array([sinif_no[s] for s in y_tr]),
+                # XGBoost sınıfları 0..k−1 sayıları ister → bu katın eğitimindeki sınıflar numaralanır
+                egitim_siniflari = np.unique(y_tr)
+                model.fit(X_tr.to_numpy(), np.searchsorted(egitim_siniflari, y_tr),
                           sample_weight=compute_sample_weight("balanced", y_tr))   # sınıf dengesizliği
             else:
                 model.fit(X_tr, y_tr)
@@ -137,7 +142,7 @@ for bolme, egitim, dogrulama in bolme_listesi:
             tahmin = model.predict(X_va.to_numpy() if ad == "XGBoost" else X_va)
             tahmin_ms = (time.time() - t0) / len(X_va) * 1000
             if ad == "XGBoost":
-                tahmin = np.array(siniflar)[tahmin]
+                tahmin = egitim_siniflari[tahmin]
 
             r = {"bolme": bolme, "model": ad, "ozellik_seti": set_adi, "ozellik_sayisi": len(kolonlar),
                  "macro_f1": f1_score(y_va, tahmin, labels=siniflar, average="macro", zero_division=0),
@@ -157,7 +162,7 @@ for bolme, egitim, dogrulama in bolme_listesi:
                     adlar, deger = kolonlar, model.feature_importances_
                 onem += [{"bolme": bolme, "model": ad, "ozellik_seti": set_adi, "ozellik": a, "onem": v}
                          for a, v in zip(adlar, deger)]
-            print(f"  {ad:15s} {set_adi:17s} macro-F1 {r['macro_f1']:.3f}  tespit-F1 {r['tespit_f1']:.3f}  "
+            print(f"  {ad:15s} {set_adi:23s} macro-F1 {r['macro_f1']:.3f}  tespit-F1 {r['tespit_f1']:.3f}  "
                   f"yanlış alarm/saat {r['yanlis_alarm_saatte']:6.1f}  ({egitim_s:.0f} s)")
 
         # ---- DENETİMSİZ: yalnızca SAĞLAM eğitim pencereleriyle; yalnızca "arıza var mı" ----
@@ -183,7 +188,7 @@ for bolme, egitim, dogrulama in bolme_listesi:
                  "egitim_s": egitim_s, "tahmin_ms_pencere": tahmin_ms}
             sonuclar.append(r)
             tahminler.append(meta_va.assign(bolme=bolme, model=ad, ozellik_seti=set_adi, tahmin=tahmin))
-            print(f"  {ad:15s} {set_adi:17s} AUC {r['auc']:.3f}       tespit-F1 {r['tespit_f1']:.3f}  "
+            print(f"  {ad:15s} {set_adi:23s} AUC {r['auc']:.3f}       tespit-F1 {r['tespit_f1']:.3f}  "
                   f"yanlış alarm/saat {r['yanlis_alarm_saatte']:6.1f}  ({egitim_s:.0f} s)")
     print()
 
@@ -213,8 +218,8 @@ if onem:
     on = (pd.DataFrame(onem).groupby(["model", "ozellik_seti", "ozellik"])["onem"].mean().reset_index()
           .sort_values("onem", ascending=False))
     on.to_csv(os.path.join(RAPOR, f"ml_ozellik_onemi{ek}.csv"), sep=";", index=False)
-    print("\n=== En önemli 10 özellik (RandomForest, ham+fizik+riskli) ===")
-    print(on[(on["model"] == "RandomForest") & (on["ozellik_seti"] == "ham+fizik+riskli")]
+    print(f"\n=== En önemli 10 özellik (RandomForest, {ANA_SET}) ===")
+    print(on[(on["model"] == "RandomForest") & (on["ozellik_seti"] == ANA_SET)]
           .head(10)[["ozellik", "onem"]].round(4).to_string(index=False))
 
 # Karışıklık matrisleri (bütün katların tahminleri birlikte, satır = gerçek, oranlar)

@@ -50,6 +50,8 @@ def fizik_ekle(oz, sabitler):
     o["su_isinmasi_farki__ort"] = o["su_isinmasi__ort"] - o["isitici_guc_pozitif__ort"] / sabitler["K"]
     o["soc_farki"] = o["soc_degisim"] - 100 * o["akim_Ah"] / sabitler["Q"]
     o["direnc_orani"] = o["vi_egimi"] / np.polyval(sabitler["R_fit"], o["Battery Temperature [°C]__ort"])
+    if "soc_degisim_5dk" in o:                             # uzun geçmiş özelliği (veri_hazirla.py'de UZUN)
+        o["soc_farki_5dk"] = o["soc_degisim_5dk"] - 100 * o["akim_Ah_5dk"] / sabitler["Q"]
     return o
 
 
@@ -66,6 +68,7 @@ KALINTI_SENSORLERI = {
     "isitici_guc_farki": [ISTENEN, ISI_P],
     "su_isinmasi": [CIKIS, GIRIS],
     "soc_farki": [SOC, I_BAT],
+    "soc_farki_5dk": [SOC, I_BAT],
     "su_isinmasi_farki": [CIKIS, GIRIS, ISI_P],
     "direnc_orani": [V_BAT, I_BAT, T_BAT],
 }
