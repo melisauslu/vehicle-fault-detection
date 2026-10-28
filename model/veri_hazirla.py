@@ -75,6 +75,18 @@ split = pd.read_csv(SPLIT, sep=";")
 grup = dict(zip(split["dosya"], split["grup"]))
 liste = pd.read_csv(os.path.join(ARIZALI, "ariza_listesi.csv"), sep=";")
 liste = liste[liste["kullanilabilir"]]                      # görünmeyen arızalar çıkarılır (A seçeneği)
+# BİZİM KARARIMIZ (yanlis_alarm_analizi.py bulgusu): batarya sıcaklık sensörü TAKILMASI gözlemlenemez kabul edilir
+# ve eğitimden de değerlendirmeden de çıkarılır. Kanıt (ham+fizik+gecmis, 5 kat):
+#   (1) sağlam sıcaklık da sık sık 5 dk boyunca hiç değişmiyor (1 °C çözünürlük; sağlam pencerelerin ~%33'ü)
+#   (2) RF ve XGBoost bu arızayı yalnızca %5–7 oranında doğru buldu
+#   (3) bu sınıf yüzünden sıcaklığı sabit sağlam pencereler 16 kat daha sık "takılma" sanıldı
+#       (%14.2 / %0.9; XGBoost yanlış alarmlarının %37'si)
+# Görünürlük filtresi (değişen oran ≥ %5) bu dosyaları geçiriyor, çünkü gerçek sıcaklık arada 1 °C değişince
+# donmuş değer ondan farklı oluyor; ama aynı durum sağlam veride de olağan (sıcaklık dakikalarca sabit).
+GOZLEMLENEMEZ = {("takilma", T_BAT)}
+cikan = [(a, s) in GOZLEMLENEMEZ for a, s in zip(liste["ariza_tipi"], liste["ariza_sinyali"])]
+print(f"Gözlemlenemez kabul edilip çıkarılan arızalı dosya: {sum(cikan)}  {sorted(GOZLEMLENEMEZ)}\n")
+liste = liste[~np.array(cikan)]
 
 saglam = {os.path.basename(f): pd.read_csv(f, sep=";") for f in sorted(glob.glob(os.path.join(TEMIZ, "*.csv")))}
 egitim_surusleri = sorted(a for a in saglam if grup.get(a) == "egitim")
@@ -247,6 +259,7 @@ bilgi = {
     "pencere_satir": PENCERE, "adim_satir": ADIM, "dl_seyreklestir": DL_SEYREKLESTIR,
     "ham_kanallar": HAM, "fizik_kanallar": list(YENI), "ozellik_gruplari": ozellik_gruplari,
     "kat": kat, "kat_bagimli": KAT_BAGIMLI, "min_akim_std": MIN_AKIM_STD, "gecmis_satir": GECMIS,
+    "gozlemlenemez": sorted(GOZLEMLENEMEZ),
 }
 with open(os.path.join(CIKTI, "bilgi.json"), "w", encoding="utf-8") as f:
     json.dump(bilgi, f, ensure_ascii=False, indent=1)
