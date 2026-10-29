@@ -1,0 +1,1372 @@
+model;ozellik_seti;ozellik;onem
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__ort;0.19830655455589294
+XGBoost;ham+fizik;isitici_guc_farki__ort;0.1849771946668625
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__ort;0.177803111076355
+XGBoost;ham+fizik;Requested Heating Power [W]__max;0.08801625370979309
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__degisim_orani;0.08519484996795654
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__max;0.08010604456067086
+XGBoost;ham+fizik;bat_guc__degisim_orani;0.07802686095237732
+XGBoost;ham+fizik+gecmis;bat_guc__degisim_orani;0.07632301449775696
+XGBoost;ham;Heating Power LIN [W]__max;0.06783165037631989
+XGBoost;ham;Battery Voltage [V]__std;0.06466491371393204
+RandomForest;ham;Battery Current [A]__ort_mutlak_fark;0.06372208444706587
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi_farki__ort;0.06290351316700868
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi_farki__ort;0.0614789217710495
+RandomForest;ham;Battery Current [A]__degisim_orani;0.05959221261121743
+RandomForest;ham;Battery Voltage [V]__ort_mutlak_fark;0.05553443618560738
+RandomForest;ham+fizik;bat_guc__ort_mutlak_fark;0.05288290584153438
+RandomForest;ham;Battery Voltage [V]__degisim_orani;0.0522387829368004
+RandomForest;ham;Battery Voltage [V]__min;0.05076330834018422
+RandomForest;ham+fizik+gecmis+riskli;direnc_orani;0.05013096160150865
+RandomForest;ham;Battery Voltage [V]__ort;0.04999293933354299
+RandomForest;ham;Battery Voltage [V]__max;0.049001671969350666
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__degismeden_s;0.04893150702118874
+XGBoost;ham;Requested Heating Power [W]__max;0.04826956689357757
+RandomForest;ham+fizik+gecmis;bat_guc__ort_mutlak_fark;0.047235717413421634
+XGBoost;ham;Battery Current [A]__degisim_orani;0.04607779681682587
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__ort_mutlak_fark;0.04560719269965397
+RandomForest;ham+fizik+gecmis;Battery Current [A]__degisim_orani;0.04218528821399873
+XGBoost;ham;Battery Voltage [V]__min;0.04156866222620011
+RandomForest;ham+fizik;Battery Current [A]__degisim_orani;0.0414842909078418
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__degismeden_s;0.04074454009532928
+XGBoost;ham+fizik;gerilim_farki__ort_mutlak_fark;0.040596853196620944
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__ort_mutlak_fark;0.04054945781826973
+XGBoost;ham+fizik+gecmis;Battery Current [A]__degismeden_s;0.038733740150928495
+RandomForest;ham+fizik+gecmis;gerilim_farki__max;0.03797319404066706
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__degisim_orani;0.03797315693402083
+RandomForest;ham+fizik+gecmis;soc_farki_5dk;0.037398588857575896
+RandomForest;ham+fizik;gerilim_farki__max;0.03667686870211856
+RandomForest;ham+fizik;Battery Current [A]__ort_mutlak_fark;0.03640596591461313
+XGBoost;ham+fizik+gecmis;gerilim_farki__ort_mutlak_fark;0.035919871926307675
+RandomForest;ham+fizik;bat_guc__degisim_orani;0.03551017808850167
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__ort;0.03484650270657523
+XGBoost;ham;Battery Voltage [V]__ort;0.03400811366736889
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__degisim_orani;0.03362005452789435
+RandomForest;ham;Battery Current [A]__ort;0.03357898956016747
+RandomForest;ham+fizik;isitici_guc_farki__ort;0.03353081878449389
+RandomForest;ham+fizik+gecmis+riskli;soc_farki_5dk;0.03350456854527399
+RandomForest;ham+fizik+gecmis;bat_guc__degisim_orani;0.032636498874932876
+RandomForest;ham;Battery Voltage [V]__std;0.03262109772221912
+RandomForest;ham;Battery Current [A]__min;0.03218040879166516
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__max;0.03215573577638607
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__ort;0.03157081678509712
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__ort_mutlak_fark;0.03157039321959019
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__ort;0.031195552947213157
+XGBoost;ham;Battery Current [A]__std;0.030742794461548328
+RandomForest;ham+fizik+gecmis;Battery Current [A]__ort_mutlak_fark;0.03050248240676142
+XGBoost;ham+fizik;su_isinmasi__max;0.030276406928896903
+XGBoost;ham+fizik;Battery Current [A]__degisim_orani;0.030045151710510254
+RandomForest;ham+fizik;Battery Voltage [V]__ort_mutlak_fark;0.029915018959169853
+XGBoost;ham;Battery Current [A]__ort_mutlak_fark;0.029698533192276954
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__degismeden_s;0.029480385780334472
+XGBoost;ham+fizik;Battery Voltage [V]__std;0.02946587689220905
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__ort_mutlak_fark;0.029385492102662603
+RandomForest;ham+fizik+gecmis;bat_guc__std;0.029024899544111037
+RandomForest;ham;Battery Current [A]__std;0.02887344637660273
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__ort;0.02879214771091938
+XGBoost;ham+fizik+gecmis+riskli;direnc_orani;0.02874777540564537
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__min;0.028217670715757082
+RandomForest;ham+fizik;bat_guc__std;0.028190690386120855
+RandomForest;ham+fizik;gerilim_farki__ort;0.0280151737533336
+XGBoost;ham;Heating Power LIN [W]__ort;0.02795593999326229
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__ort_mutlak_fark;0.027550401428015903
+RandomForest;ham+fizik;isitici_guc_farki__min;0.027304558557832665
+XGBoost;ham+fizik+gecmis;su_isinmasi__max;0.026883609220385553
+RandomForest;ham+fizik;soc_farki;0.026749879775097803
+RandomForest;ham+fizik;Battery Voltage [V]__degisim_orani;0.02639138374657225
+XGBoost;ham+fizik;Heating Power LIN [W]__max;0.0259724922478199
+RandomForest;ham;Battery Current [A]__max;0.025856643896231858
+XGBoost;ham;Battery Current [A]__ort;0.025439612194895746
+XGBoost;ham+fizik;Battery Temperature [°C]__ort_mutlak_fark;0.025382245471701027
+RandomForest;ham+fizik+gecmis;gerilim_farki__ort;0.025255970771847054
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__min;0.0250459019795602
+XGBoost;ham+fizik;Battery Voltage [V]__degisim_orani;0.024958306550979616
+RandomForest;ham+fizik+gecmis;su_isinmasi__max;0.024685013672266987
+XGBoost;ham+fizik+gecmis;bat_guc__ort_mutlak_fark;0.024542181566357613
+XGBoost;ham+fizik;bat_guc__ort_mutlak_fark;0.024370386451482772
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__std;0.024181890264954743
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__ort;0.02417574062572301
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__ort_mutlak_fark;0.02415644830536855
+RandomForest;ham+fizik;gerilim_farki__min;0.02398743193791207
+RandomForest;ham+fizik;su_isinmasi__max;0.02381988873025595
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__degisim_orani;0.0236393893385371
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__max;0.023630379885435104
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__ort_mutlak_fark;0.02316785006927909
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__ort_mutlak_fark;0.02282286761328578
+RandomForest;ham+fizik;gerilim_farki__ort_mutlak_fark;0.02281529843257068
+RandomForest;ham+fizik+gecmis;gerilim_farki__min;0.02237388867565411
+XGBoost;ham+fizik+gecmis;Battery Current [A]__degisim_orani;0.022223836183547972
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__max;0.022077833861112596
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__min;0.021802176167220695
+RandomForest;ham+fizik;Battery Voltage [V]__std;0.021746041752153316
+XGBoost;ham;Battery Temperature [°C]__degisim_orani;0.02160442085005343
+XGBoost;ham;Battery Voltage [V]__ort_mutlak_fark;0.021137481555342674
+RandomForest;ham+fizik+gecmis;gerilim_farki__ort_mutlak_fark;0.021123122843485314
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__max;0.020708245784044267
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__degisim_orani;0.020678464817403548
+RandomForest;ham+fizik;bat_guc__min;0.02041779512470996
+RandomForest;ham+fizik;su_isinmasi__ort;0.020252741901795136
+XGBoost;ham+fizik+gecmis+riskli;soc_farki_5dk;0.019997471943497658
+XGBoost;ham+fizik+gecmis+riskli;soc_farki;0.01991847399622202
+RandomForest;ham+fizik+gecmis;su_isinmasi__ort;0.01988169626106901
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__degisim_orani;0.019776007533073424
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__ort_mutlak_fark;0.01964282209590568
+RandomForest;ham;Heating Power LIN [W]__max;0.019485644499314198
+RandomForest;ham+fizik;Battery Voltage [V]__min;0.01931183326540303
+XGBoost;ham+fizik;soc_farki;0.018844113498926163
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__max;0.018755158685524215
+XGBoost;ham+fizik;bat_guc__min;0.01841177521273494
+XGBoost;ham;Battery Voltage [V]__degisim_orani;0.018272452428936957
+XGBoost;ham+fizik+gecmis;gerilim_farki__max;0.018177850916981698
+XGBoost;ham+fizik+gecmis;soc_farki;0.018127606250345707
+RandomForest;ham+fizik;Battery Voltage [V]__ort;0.018074375553756995
+RandomForest;ham+fizik+gecmis;soc_farki;0.018028418780136377
+RandomForest;ham+fizik;isitici_guc_farki__max;0.017955606719308535
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__ort;0.017928158138241407
+XGBoost;ham+fizik;gerilim_farki__max;0.01779223494231701
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__max;0.01772417859842997
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__min;0.017641774803858513
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__degismeden_s;0.01758779071067191
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__ort;0.017474579549121443
+XGBoost;ham+fizik+gecmis;soc_farki_5dk;0.017458883486688136
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__max;0.017450192831699882
+RandomForest;ham+fizik+gecmis+riskli;soc_farki;0.017235241943612093
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__std;0.017060866424270772
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__max;0.016831713635077912
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__min;0.016830379658483958
+RandomForest;ham+fizik;Battery Voltage [V]__max;0.016817859005471936
+XGBoost;ham+fizik;Requested Heating Power [W]__ort;0.01677648425102234
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__min;0.01675634758207431
+RandomForest;ham+fizik;su_isinmasi__min;0.01671234815885592
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__ort;0.016669831600436908
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__std;0.016514764726161958
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__max;0.016467717194335214
+RandomForest;ham+fizik+gecmis;bat_guc__min;0.016365970143679943
+RandomForest;ham+fizik;gerilim_farki__degisim_orani;0.01634738782974172
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__std;0.01613993151508485
+RandomForest;ham+fizik;gerilim_farki__std;0.01589180735179061
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__degismeden_s;0.01570119195857835
+RandomForest;ham+fizik+gecmis;su_isinmasi__min;0.01564705481791003
+XGBoost;ham;SoC [%]__degisim_orani;0.015475774742662906
+RandomForest;ham+fizik;Battery Current [A]__std;0.01536762926278418
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__min;0.014957667308668151
+RandomForest;ham;Heating Power LIN [W]__ort;0.014952153893758865
+RandomForest;ham+fizik+gecmis;gerilim_farki__std;0.014870138635514929
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__ort;0.014815866947174072
+RandomForest;ham+fizik+gecmis;gerilim_farki__degisim_orani;0.014787624492252922
+RandomForest;ham+fizik;bat_guc__ort;0.014526520630579154
+XGBoost;ham;Heating Power LIN [W]__degisim_orani;0.014344722218811511
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__max;0.01431289883629199
+RandomForest;ham;Heater Current [A]__max;0.014075699774216707
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__degisim_orani;0.013749429452698886
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__max;0.013615018129348755
+RandomForest;ham;Heater Current [A]__ort;0.01358956011016221
+XGBoost;ham;Requested Heating Power [W]__ort;0.013587981276214123
+XGBoost;ham+fizik;bat_guc__ort;0.013501369394361973
+RandomForest;ham+fizik+gecmis;bat_guc__ort;0.013431159356396568
+XGBoost;ham;Heater Current [A]__degisim_orani;0.013188582845032215
+XGBoost;ham;Requested Heating Power [W]__min;0.01302745919674635
+XGBoost;ham+fizik+gecmis;bat_guc__ort;0.012877239845693111
+RandomForest;ham+fizik+gecmis;Battery Current [A]__std;0.01273340149460834
+RandomForest;ham+fizik;Battery Current [A]__ort;0.012694174150514525
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__ort;0.012659457402616158
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__std;0.012636583171971815
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__ort;0.012243993766605853
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__std;0.011979529692920208
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__ort;0.011619718186557293
+XGBoost;ham+fizik+gecmis;Battery Current [A]__ort;0.01150881201028824
+RandomForest;ham+fizik;isitici_guc_farki__basiklik;0.011491954525280684
+XGBoost;ham;Ambient Temperature [°C]__max;0.011265663988888263
+XGBoost;ham;Heater Voltage [V]__ort_mutlak_fark;0.011193319782614708
+XGBoost;ham;SoC [%]__son_ilk;0.011163193732500076
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__basiklik;0.01106969520402302
+XGBoost;ham;Battery Current [A]__min;0.011045349854975938
+XGBoost;ham;Heating Power LIN [W]__min;0.010967907309532166
+RandomForest;ham+fizik+gecmis;Battery Current [A]__ort;0.010946368427666385
+XGBoost;ham;Heater Current [A]__ort_mutlak_fark;0.010929407551884651
+RandomForest;ham;SoC [%]__ort;0.010846742957349028
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__ort;0.010725133828485384
+RandomForest;ham+fizik+gecmis;Battery Current [A]__degismeden_s;0.010701274041223872
+XGBoost;ham;Ambient Temperature [°C]__min;0.010691898316144944
+RandomForest;ham;Heater Voltage [V]__ort_mutlak_fark;0.010653876549851888
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__degismeden_s;0.010650857876796626
+RandomForest;ham+fizik;bat_guc__max;0.010620409568416107
+XGBoost;ham;Battery Temperature [°C]__ort_mutlak_fark;0.010596880060620605
+XGBoost;ham;Heater Current [A]__max;0.010586840007454157
+RandomForest;ham;Battery Temperature [°C]__ort;0.01046867668847689
+XGBoost;ham+fizik;SoC [%]__degisim_orani;0.010396585240960122
+XGBoost;ham;Battery Temperature [°C]__ort;0.010368365049362182
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__basiklik;0.010367958766162649
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__max;0.010282940324395895
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__ort;0.010177924688178037
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__min;0.010161387221887707
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__ort;0.010112276776686323
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__min;0.010051260143518448
+RandomForest;ham+fizik;Battery Current [A]__min;0.009989194082481643
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__max;0.009938758573095507
+RandomForest;ham;Requested Heating Power [W]__ort;0.00989007097706846
+RandomForest;ham;SoC [%]__max;0.009798985291936324
+RandomForest;ham;SoC [%]__min;0.009674469670725895
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__max;0.00962089691311121
+RandomForest;ham;Battery Temperature [°C]__max;0.009572376156857795
+XGBoost;ham;Battery Temperature [°C]__max;0.009523841273039579
+RandomForest;ham;Battery Temperature [°C]__min;0.009514235058477453
+RandomForest;ham+fizik+gecmis;bat_guc__max;0.009468750230029833
+RandomForest;ham;Heating Power LIN [W]__min;0.009462928278621111
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__std;0.009376093465834855
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__ort;0.009370702132582665
+RandomForest;ham+fizik;Battery Current [A]__max;0.009326266803184933
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__min;0.009292376251570159
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__degisim_orani;0.009280054271221161
+XGBoost;ham;SoC [%]__ort_mutlak_fark;0.009096210636198521
+XGBoost;ham+fizik+gecmis;SoC [%]__degisim_orani;0.00891118086874485
+XGBoost;ham;SoC [%]__min;0.00890644509345293
+XGBoost;ham+fizik;bat_guc__std;0.008902210276573896
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__min;0.008870067447423935
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__max;0.008859329500802966
+RandomForest;ham;Ambient Temperature [°C]__ort;0.00866163540039678
+RandomForest;ham+fizik+gecmis;Battery Current [A]__max;0.008551713188944392
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__min;0.008514464625051007
+XGBoost;ham;Requested Heating Power [W]__degisim_orani;0.008481031376868486
+RandomForest;ham;Heater Current [A]__degisim_orani;0.008464143367640408
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__max;0.008388391882181167
+XGBoost;ham;SoC [%]__ort;0.008372176438570023
+RandomForest;ham+fizik+gecmis;Battery Current [A]__min;0.008314197061553282
+XGBoost;ham;Battery Current [A]__max;0.008217193651944399
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__std;0.008070384338498115
+XGBoost;ham;Heater Voltage [V]__degisim_orani;0.007996494974941015
+RandomForest;ham;SoC [%]__degisim_orani;0.007973023472104119
+XGBoost;ham+fizik;Heater Voltage [V]__std;0.007855886034667492
+RandomForest;ham;Requested Heating Power [W]__min;0.007770586141419791
+XGBoost;ham+fizik;gerilim_farki__std;0.007748200744390488
+RandomForest;ham;Requested Heating Power [W]__max;0.007747536007076729
+XGBoost;ham;Heater Current [A]__min;0.007727280352264642
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__min;0.007721069403699174
+RandomForest;ham+fizik+gecmis;gerilim_farki__egim_5dk;0.007696030876040728
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__max;0.007639015861786902
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__degisim_orani;0.007620387710630894
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__ort;0.0075560747645795345
+XGBoost;ham;Battery Temperature [°C]__min;0.0075057770125567915
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__min;0.0074735026806592945
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__ort;0.007374059070330123
+XGBoost;ham;Heater Voltage [V]__min;0.007306582666933537
+RandomForest;ham;Ambient Temperature [°C]__min;0.0072764598054852565
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__max;0.007276175190513906
+RandomForest;ham+fizik;Heating Power LIN [W]__max;0.007190621492899457
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__max;0.0070577469065994216
+RandomForest;ham;Ambient Temperature [°C]__max;0.007040145849293392
+XGBoost;ham+fizik;Battery Voltage [V]__ort;0.007034555496647954
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__ort;0.006928639187394614
+RandomForest;ham;Heater Voltage [V]__std;0.006905323717303959
+XGBoost;ham;SoC [%]__max;0.006839838158339262
+RandomForest;ham;Heater Voltage [V]__min;0.006803798927743704
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__degisim_orani;0.006777496263384819
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__max;0.00677421223815584
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__egim_5dk;0.00676993525709093
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__ort;0.006733219834783449
+RandomForest;ham+fizik;Battery Temperature [°C]__ort;0.006694104669741978
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__min;0.006659826321640862
+RandomForest;ham;Heater Current [A]__min;0.006631550114743959
+XGBoost;ham+fizik;Heater Current [A]__min;0.006610206770710647
+XGBoost;ham+fizik+gecmis;gerilim_farki__ort;0.00659534796141088
+XGBoost;ham+fizik+gecmis;Heater Current [A]__max;0.006569864135235548
+RandomForest;ham;Heater Voltage [V]__ort;0.006539181504113117
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__std;0.006530218617990613
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__ort;0.0065278035122901205
+RandomForest;ham+fizik;Heating Power LIN [W]__ort;0.006479364596409826
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__max;0.0064764483826405695
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__std;0.006474587554112077
+XGBoost;ham+fizik;Heater Voltage [V]__min;0.0064607876352965835
+XGBoost;ham;Heater Voltage [V]__std;0.0064281485043466095
+RandomForest;ham;Heating Power LIN [W]__degisim_orani;0.006381657040287603
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__max;0.006381357274949551
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__min;0.006377062424217717
+XGBoost;ham+fizik+gecmis;SoC [%]__son_ilk;0.006342618123744615
+XGBoost;ham+fizik;gerilim_farki__degisim_orani;0.006306540034711361
+XGBoost;ham+fizik+gecmis;gerilim_farki__std;0.006254597054794431
+RandomForest;ham+fizik;Battery Temperature [°C]__min;0.00621387430361716
+RandomForest;ham+fizik;Battery Temperature [°C]__max;0.006209071536833485
+XGBoost;ham;Heater Voltage [V]__ort;0.006125168409198523
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__max;0.00611298424001532
+XGBoost;ham+fizik;Battery Current [A]__ort_mutlak_fark;0.006099771335721016
+XGBoost;ham+fizik;Heater Voltage [V]__degisim_orani;0.006084412755444646
+RandomForest;ham+fizik;Heater Current [A]__ort;0.006069364694504363
+XGBoost;ham+fizik;Ambient Temperature [°C]__max;0.006042925734072923
+XGBoost;ham+fizik+gecmis;Battery Current [A]__ort_mutlak_fark;0.005995244858786464
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__max;0.00599474706959947
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__min;0.005931930791120976
+XGBoost;ham;Ambient Temperature [°C]__ort;0.0059170137159526345
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__ort_mutlak_fark;0.005894898646511137
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.005862774467095733
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__ort;0.005831222583193548
+RandomForest;ham+fizik;SoC [%]__ort;0.005815709982911524
+RandomForest;ham;Heater Voltage [V]__max;0.005809532045107051
+XGBoost;ham;SoC [%]__egim;0.005774176493287086
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__egim;0.005768566497135907
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__ort;0.005725786401481109
+RandomForest;ham+fizik+gecmis;SoC [%]__ort;0.005722841818875753
+XGBoost;ham+fizik;su_isinmasi__ort;0.005719678290188312
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__max;0.005710252374410629
+XGBoost;ham;Heater Current [A]__ort;0.005677811149507761
+RandomForest;ham+fizik;Requested Heating Power [W]__ort;0.00567295013415523
+XGBoost;ham+fizik;Battery Voltage [V]__max;0.005670203501358629
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.005657235020771622
+XGBoost;ham+fizik;gerilim_farki__ort;0.005654684407636524
+RandomForest;ham+fizik;Heater Voltage [V]__ort_mutlak_fark;0.0056423734125604
+RandomForest;ham+fizik+gecmis;SoC [%]__min;0.0056361591854221455
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__min;0.005635030931770403
+XGBoost;ham;Heater Voltage [V]__max;0.005581236816942692
+XGBoost;ham;Battery Voltage [V]__max;0.005577556695789099
+XGBoost;ham+fizik;SoC [%]__ort;0.005576645024120808
+RandomForest;ham+fizik;SoC [%]__min;0.00553690026752484
+XGBoost;ham+fizik;SoC [%]__son_ilk;0.005508444225415588
+RandomForest;ham+fizik+gecmis;SoC [%]__max;0.0055083466452204004
+RandomForest;ham+fizik;Heater Current [A]__max;0.005498526847036626
+RandomForest;ham+fizik;SoC [%]__max;0.005494232319064479
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__min;0.005470974207621659
+RandomForest;ham+fizik+gecmis;Heater Current [A]__ort;0.005470664819206718
+XGBoost;ham+fizik;Heater Current [A]__max;0.0054227351676672695
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__degisim_orani;0.0054096335952635854
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__ort;0.005360900382965171
+RandomForest;ham+fizik+gecmis;Heater Current [A]__max;0.0053502574870219425
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__ort;0.00534293707460165
+XGBoost;ham+fizik+gecmis;Heater Current [A]__min;0.005337492935359478
+XGBoost;ham+fizik;Battery Temperature [°C]__ort;0.00530838523991406
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__min;0.0052999593550339345
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__ort;0.005261105578392744
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__max;0.005194422542474671
+RandomForest;ham+fizik;SoC [%]__degisim_orani;0.0051854471319477055
+XGBoost;ham+fizik;SoC [%]__ort_mutlak_fark;0.005181022407487035
+XGBoost;ham+fizik+gecmis;su_isinmasi__ort;0.0051750961225479845
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__ort;0.005168043356388807
+XGBoost;ham+fizik;Battery Voltage [V]__min;0.005154473381116987
+XGBoost;ham+fizik;SoC [%]__min;0.005134509690105915
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__ort;0.005084781255681141
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__ort;0.005056857550516725
+XGBoost;ham+fizik+gecmis;gerilim_farki__degisim_orani;0.0050378555431962015
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__min;0.00494027785025537
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__std;0.004927711607888341
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__max;0.004887844435870647
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__ort_mutlak_fark;0.004877583967392402
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__ort;0.004861472407355905
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__max;0.004860823263879865
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__min;0.004853353428938514
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__max;0.0048237669321829785
+XGBoost;ham;Velocity [km/h]__ort;0.00481861368753016
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__std;0.004778227768838406
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__ort;0.004749749781680303
+XGBoost;ham+fizik+gecmis;Battery Current [A]__min;0.004690803156699985
+XGBoost;ham+fizik+gecmis;SoC [%]__ort;0.004657850321382284
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__min;0.004654784291800095
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__max;0.004638121881589243
+XGBoost;ham+fizik;Battery Temperature [°C]__max;0.0046242452692240475
+RandomForest;ham;Heater Voltage [V]__degisim_orani;0.004608707716821118
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__max;0.004603963687289327
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__son_ilk;0.004594499012455344
+XGBoost;ham+fizik;isitici_VI_farki__min;0.004587138257920742
+XGBoost;ham+fizik;Heater Voltage [V]__ort_mutlak_fark;0.004570489004254341
+RandomForest;ham+fizik;isitici_VI_farki__min;0.004536612741176665
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__ort;0.004516102123529481
+RandomForest;ham+fizik;Ambient Temperature [°C]__ort;0.004485064618922412
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__degisim_orani;0.004478791233850643
+XGBoost;ham+fizik;Heater Voltage [V]__max;0.004440294485539198
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__ort;0.00442271850024782
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__ort;0.00441103413325894
+XGBoost;ham+fizik;Heater Current [A]__ort;0.004364589648321271
+RandomForest;ham;Heating Power LIN [W]__ort_mutlak_fark;0.0043581731278385894
+RandomForest;ham+fizik+gecmis;SoC [%]__degisim_orani;0.004350974314204153
+RandomForest;ham+fizik;Requested Heating Power [W]__max;0.004338312919149502
+XGBoost;ham+fizik+gecmis;SoC [%]__min;0.004323163302615285
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__max;0.0043072409883431065
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__min;0.004298415640369058
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__min;0.004283978216026338
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__max;0.004281365479739448
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__max;0.004260217770934105
+XGBoost;ham+fizik;Battery Current [A]__ort;0.004249710962176323
+XGBoost;ham+fizik;Heating Power LIN [W]__ort;0.004243283765390515
+RandomForest;ham+fizik;Heating Power LIN [W]__min;0.00423692041207972
+RandomForest;ham;Velocity [km/h]__max;0.004196313803579877
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__min;0.0041898891173655275
+XGBoost;ham+fizik+gecmis;SoC [%]__ort_mutlak_fark;0.004181906161829829
+XGBoost;ham;Velocity [km/h]__max;0.004136626003310084
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__max;0.004132064431905747
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__ort_mutlak_fark;0.004129909910261631
+XGBoost;ham+fizik+gecmis;bat_guc__std;0.004128611134365201
+XGBoost;ham;Velocity [km/h]__son_ilk;0.0041100721340626475
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__min;0.004089162545278668
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__ort;0.004075529993207238
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__min;0.004075427213683725
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__min;0.0040703421661461864
+RandomForest;ham+fizik;Heater Voltage [V]__std;0.004064567783061858
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__ort;0.004016566229984165
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__ort;0.004012920810807144
+RandomForest;ham;Heater Current [A]__ort_mutlak_fark;0.003950749699197735
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__max;0.0039022988174110653
+XGBoost;ham+fizik;Heater Current [A]__degisim_orani;0.0039009961765259504
+RandomForest;ham+fizik;Heater Voltage [V]__min;0.0039007983063214756
+XGBoost;ham+fizik;Battery Temperature [°C]__degisim_orani;0.0038833124679513277
+XGBoost;ham;Velocity [km/h]__degisim_orani;0.003835129737854004
+XGBoost;ham+fizik;SoC [%]__max;0.0038325882982462645
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__ort;0.0038235425908684415
+RandomForest;ham+fizik;Heater Voltage [V]__ort;0.003816406270800736
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__max;0.003806960250448215
+XGBoost;ham+fizik;isitici_VI_farki__ort_mutlak_fark;0.0038058679085224865
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__max;0.003802496334537864
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__min;0.003794299282218622
+RandomForest;ham+fizik;Ambient Temperature [°C]__max;0.003785336395303198
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__min;0.0037828389813138173
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__std;0.003779768664389849
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__ort;0.003770690496029153
+XGBoost;ham+fizik+gecmis;Battery Current [A]__max;0.0037616179324686527
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__ort;0.0037514488639443545
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__ort;0.00372542655095458
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__max;0.003719697835438119
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__son_ilk;0.0036977809853851796
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__son_ilk;0.0036713371286168695
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__min;0.0036687388783320785
+RandomForest;ham+fizik;Ambient Temperature [°C]__min;0.003652228408691227
+XGBoost;ham;Velocity [km/h]__min;0.003649300569668412
+RandomForest;ham+fizik;Requested Heating Power [W]__min;0.0036458340407435133
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__min;0.0036426302473304196
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__ort_mutlak_fark;0.0036208047803323678
+XGBoost;ham+fizik+gecmis;bat_guc__min;0.0036198189947754143
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__ort;0.0036081648198887707
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__min;0.003583088595061544
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__max;0.003576966266369543
+RandomForest;ham;Battery Voltage [V]__carpiklik;0.003571035667765579
+XGBoost;ham+fizik;Ambient Temperature [°C]__min;0.0035679608583450316
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__max;0.0035386951174587013
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__std;0.0035370114077642343
+RandomForest;ham;Velocity [km/h]__ort;0.0035368434050529847
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__son_ilk;0.0035324954893440007
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__ort;0.0035321108338242984
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__ort;0.0035172464759708256
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__min;0.0035080316743975578
+XGBoost;ham+fizik;Battery Current [A]__max;0.0034827990923076866
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__ort;0.0034509504645400613
+RandomForest;ham+fizik;su_isinmasi__degisim_orani;0.003446812634913902
+XGBoost;ham+fizik;bat_guc__max;0.0034350195899605753
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__ort;0.0034184791846200826
+XGBoost;ham+fizik;su_isinmasi__min;0.0034039142541587354
+RandomForest;ham;Battery Current [A]__carpiklik;0.0034020933149407364
+XGBoost;ham;Velocity [km/h]__ort_mutlak_fark;0.0033882402814924715
+XGBoost;ham+fizik;Heater Current [A]__son_ilk;0.0033801831654272974
+RandomForest;ham+fizik+gecmis;su_isinmasi__degisim_orani;0.003379635286229929
+RandomForest;ham+fizik;Heater Current [A]__min;0.0033725052160836185
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__min;0.0033629923826083543
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__son_ilk;0.0033545468002557756
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__son_ilk;0.003352591339257152
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__son_ilk;0.0033516583498567343
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__min;0.0033371837344020605
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__min;0.0033277940393659404
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__max;0.0033273370238021014
+RandomForest;ham+fizik+gecmis;Heater Current [A]__min;0.003318306694819186
+RandomForest;ham+fizik;Heater Voltage [V]__max;0.003303910832236287
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__min;0.003292346140369773
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.0032634124625474216
+XGBoost;ham;Requested Heating Power [W]__son_ilk;0.0032564025837928056
+RandomForest;ham+fizik;isitici_VI_farki__max;0.0032551507111594708
+XGBoost;ham+fizik+gecmis;SoC [%]__max;0.0032511216588318346
+RandomForest;ham;Battery Voltage [V]__basiklik;0.003244744889737761
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__max;0.0032336836215108634
+XGBoost;ham;Velocity [km/h]__std;0.0032251026947051286
+XGBoost;ham+fizik;Heating Power LIN [W]__son_ilk;0.0032207622309215365
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__min;0.003212937549687922
+XGBoost;ham+fizik+gecmis;Heater Current [A]__degisim_orani;0.003198531363159418
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__min;0.0031961818225681783
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__max;0.0031960582826286556
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.003167003503302359
+XGBoost;ham+fizik;Heater Voltage [V]__ort;0.0031637241831049324
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.0031320853077580852
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__max;0.003129599057137966
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__max;0.003112679832164687
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__degisim_orani;0.003104697628669554
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__std;0.0030479165359913836
+XGBoost;ham+fizik;Battery Temperature [°C]__min;0.0030271482653915884
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__ort;0.0030171636259183287
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__max;0.0030115905350940374
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__max;0.0030065833125263453
+XGBoost;ham+fizik+gecmis;Heater Current [A]__ort;0.002994977426715195
+XGBoost;ham+fizik+gecmis;su_isinmasi__min;0.0029690470779314636
+XGBoost;ham+fizik+gecmis;bat_guc__max;0.00295820995233953
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__ort;0.0029492368223145602
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__min;0.0029445938615659016
+RandomForest;ham;Velocity [km/h]__min;0.0029394416977729745
+XGBoost;ham+fizik;Ambient Temperature [°C]__ort;0.002930691512301564
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__min;0.0029221762670204043
+RandomForest;ham;Heater Current [A]__std;0.0029125188138569335
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__max;0.0028975260268218773
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__max;0.002896111540030688
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__ort_mutlak_fark;0.002891590865328908
+RandomForest;ham+fizik;Heater Current [A]__degisim_orani;0.002882760760391501
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__min;0.0028827029002623373
+XGBoost;ham+fizik+gecmis;Heater Current [A]__son_ilk;0.0028497303428594023
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__max;0.002848408484394763
+XGBoost;ham+fizik;su_isinmasi__degisim_orani;0.002828094083815813
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__std;0.002809792743451796
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__max;0.00280289389193058
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__egim;0.0027709375044666657
+XGBoost;ham;Requested Heating Power [W]__ort_mutlak_fark;0.002757415873929858
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__min;0.00274656456823388
+XGBoost;ham+fizik;gerilim_farki__min;0.00273429942317307
+XGBoost;ham;Heating Power LIN [W]__son_ilk;0.002709295367822051
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__min;0.002681864390067781
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__degisim_orani;0.0026708342600613834
+RandomForest;ham+fizik+gecmis;Heater Current [A]__degisim_orani;0.002658874022548695
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__min;0.002649752330034971
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__min;0.0026419769041240216
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__degisim_orani;0.00263254230376333
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__egim;0.0026234462158754466
+RandomForest;ham;Heating Power LIN [W]__std;0.002615178187907326
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__max;0.0026105895986421254
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__egim;0.00260841378767509
+XGBoost;ham+fizik;Battery Voltage [V]__ort_mutlak_fark;0.002603930956684053
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__ort;0.0025888077332638206
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__ort;0.0025848117074929178
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__std;0.0025776205817237496
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__ort;0.0025673193391412496
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__std;0.0025508829910504387
+XGBoost;ham;Requested Heating Power [W]__std;0.0025468091713264584
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__max;0.0025456985890253353
+XGBoost;ham;Battery Temperature [°C]__egim;0.0025342578766867517
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__min;0.0025287643540650604
+XGBoost;ham;Battery Voltage [V]__egim;0.002486030338332057
+RandomForest;ham;Velocity [km/h]__ort_mutlak_fark;0.0024796864196597345
+RandomForest;ham+fizik+gecmis+riskli;missingindicator_direnc_orani;0.0024784012034436325
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__max;0.0024646685225889085
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__degisim_orani;0.0024609773652628066
+RandomForest;ham;Battery Current [A]__basiklik;0.0024537706636320986
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.002431741915643215
+RandomForest;ham;Battery Voltage [V]__egim;0.0024310955760063835
+RandomForest;ham+fizik;isitici_guc_farki__std;0.0024202880949379954
+RandomForest;ham;SoC [%]__egim;0.0024153702203592157
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__min;0.00238837626160968
+RandomForest;ham+fizik;Heater Voltage [V]__degisim_orani;0.0023720943199454815
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.0023534027626737953
+RandomForest;ham+fizik;Velocity [km/h]__max;0.0023524623010490304
+RandomForest;ham;SoC [%]__std;0.00234320421015158
+XGBoost;ham+fizik;Heating Power LIN [W]__min;0.002319628233090043
+XGBoost;ham+fizik+gecmis;su_isinmasi__degisim_orani;0.0023184434743598104
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__min;0.0023180268821306528
+RandomForest;ham;Battery Current [A]__egim;0.002308086431271294
+RandomForest;ham;Battery Voltage [V]__son_ilk;0.002305519485235237
+XGBoost;ham+fizik;isitici_guc_farki__min;0.002274405281059444
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__max;0.0022725071059539912
+XGBoost;ham+fizik;Velocity [km/h]__min;0.00225257882848382
+XGBoost;ham+fizik;isitici_VI_farki__max;0.0022453326731920243
+XGBoost;ham+fizik;Battery Temperature [°C]__son_ilk;0.002228160109370947
+XGBoost;ham+fizik+gecmis;gerilim_farki__min;0.002181090950034559
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__ort;0.0021739471703767776
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__min;0.002158459136262536
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__egim;0.0021470018604304642
+XGBoost;ham+fizik;isitici_guc_farki__egim;0.002136608463479206
+RandomForest;ham;Battery Current [A]__son_ilk;0.002134726807282051
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__egim;0.002131684124469757
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__ort;0.0021254941663399695
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__ort;0.0021252127677940597
+XGBoost;ham+fizik;Heater Current [A]__ort_mutlak_fark;0.0021230353973805904
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__min;0.0021168482257053257
+RandomForest;ham;Requested Heating Power [W]__degisim_orani;0.002111963673294267
+XGBoost;ham+fizik;Velocity [km/h]__degisim_orani;0.0021104192826896908
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__son_ilk;0.002109473846262566
+RandomForest;ham;SoC [%]__ort_mutlak_fark;0.002091647597386331
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__ort_mutlak_fark;0.0020879433955997228
+XGBoost;ham+fizik;Requested Heating Power [W]__min;0.002084715943783522
+RandomForest;ham+fizik;isitici_guc_farki__egim;0.0020664665661150996
+XGBoost;ham+fizik;Velocity [km/h]__ort;0.002057046885602176
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__max;0.0020386916679225576
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__degisim_orani;0.0020341848336417386
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__std;0.002027651646106658
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__egim;0.002025228142680581
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__degismeden_s;0.002009280122400728
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__degisim_orani;0.002009009121565768
+XGBoost;ham;Heating Power LIN [W]__ort_mutlak_fark;0.0019875512225553393
+RandomForest;ham+fizik;bat_guc__carpiklik;0.0019718224021814425
+RandomForest;ham+fizik;Velocity [km/h]__ort;0.0019464014399200192
+XGBoost;ham;Battery Temperature [°C]__son_ilk;0.0019240720313973725
+XGBoost;ham;SoC [%]__std;0.0019109556451439857
+XGBoost;ham+fizik;Velocity [km/h]__max;0.0018860408570617437
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__degisim_orani;0.00188312076497823
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__ort;0.0018649168428964912
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__egim;0.001863668684872662
+RandomForest;ham;SoC [%]__son_ilk;0.001847198539084571
+XGBoost;ham+fizik+gecmis;Battery Current [A]__std;0.0018385216710157693
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__max;0.0018305999406990144
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__degisim_orani;0.001828184875755168
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__min;0.001826532860286534
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__degisim_orani;0.001815253286363921
+RandomForest;ham+fizik;su_isinmasi__std;0.0018091352399496967
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__max;0.0018087321426719428
+XGBoost;ham+fizik;Battery Current [A]__std;0.0018051957711577415
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__min;0.0018003235338255763
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__ort;0.0017847836366854607
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__std;0.0017826947603394754
+RandomForest;ham;Requested Heating Power [W]__ort_mutlak_fark;0.0017525835907821034
+RandomForest;ham;Velocity [km/h]__std;0.0017470414698401754
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__carpiklik;0.0017417897463606839
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__degismeden_s;0.0017397729838584872
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__ort;0.0017373895734015409
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__ort;0.0017373356652345205
+XGBoost;ham+fizik;isitici_guc_farki__max;0.001734192157164216
+RandomForest;ham;Velocity [km/h]__degisim_orani;0.0017337208650847682
+RandomForest;ham+fizik+gecmis;bat_guc__carpiklik;0.0016992328621226363
+RandomForest;ham+fizik+gecmis;su_isinmasi__std;0.0016935996075193853
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__ort_mutlak_fark;0.0016818499774672092
+XGBoost;ham;Requested Heating Power [W]__egim;0.0016493775648996234
+XGBoost;ham;Heater Current [A]__son_ilk;0.0016427720198407768
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__min;0.0016401850036345423
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__ort;0.0016353325918316841
+XGBoost;ham+fizik;su_isinmasi__son_ilk;0.0016243675258010627
+RandomForest;ham;Velocity [km/h]__son_ilk;0.001616731202145472
+RandomForest;ham+fizik;gerilim_farki__egim;0.0016159596437147453
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__degisim_orani;0.0016109440010040998
+RandomForest;ham;Requested Heating Power [W]__std;0.0016034061408568602
+XGBoost;ham;Ambient Temperature [°C]__std;0.0016016849782317876
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__degisim_orani;0.0015999597730115057
+RandomForest;ham+fizik;gerilim_farki__son_ilk;0.0015857850013484063
+XGBoost;ham;Ambient Temperature [°C]__son_ilk;0.0015818606596440076
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__max;0.0015798061853274704
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__degisim_orani;0.001574727613478899
+RandomForest;ham+fizik;bat_guc__basiklik;0.0015717216744876444
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__son_ilk;0.001559096435084939
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__son_ilk;0.0015425280085764824
+XGBoost;ham+fizik;SoC [%]__egim;0.0015332775888964533
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__ort_mutlak_fark;0.0015242713270708919
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__ort;0.0015192628953289234
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.001514842659454819
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__egim;0.0015111547303447883
+RandomForest;ham+fizik;Velocity [km/h]__min;0.0015087767974697858
+XGBoost;ham;Heating Power LIN [W]__std;0.0015058856224641204
+XGBoost;ham+fizik+gecmis;Heater Current [A]__ort_mutlak_fark;0.0015025067375972867
+RandomForest;ham+fizik;bat_guc__egim;0.0014980711810579236
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__std;0.001486544735962525
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__min;0.0014854423701763154
+RandomForest;ham;Heater Voltage [V]__carpiklik;0.0014828170705509427
+XGBoost;ham;Heater Current [A]__std;0.001476298354100436
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__ort_mutlak_fark;0.0014741211431100964
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.001474084838942893
+XGBoost;ham+fizik;Velocity [km/h]__ort_mutlak_fark;0.0014718457590788604
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.0014663231326267124
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__son_ilk;0.001454682508483529
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__egim_5dk;0.0014515058253891766
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__ort_mutlak_fark;0.0014511182904243468
+XGBoost;ham+fizik+gecmis;SoC [%]__egim;0.0014415427576750517
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__ort;0.0014395488426089287
+XGBoost;ham+fizik+gecmis;su_isinmasi__son_ilk;0.001415346353314817
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__min;0.0014148141751080343
+RandomForest;ham+fizik;isitici_VI_farki__degisim_orani;0.0014134408267637737
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__son_ilk;0.0013980807707412168
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__egim;0.001387711032293737
+RandomForest;ham+fizik;isitici_VI_farki__ort_mutlak_fark;0.0013802868991008744
+RandomForest;ham;Battery Temperature [°C]__degisim_orani;0.0013788387290805605
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__max;0.001374629116617143
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__ort;0.0013741116970777511
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__std;0.0013729069847613572
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__max;0.0013608622830361128
+RandomForest;ham+fizik;SoC [%]__egim;0.0013580791583505463
+XGBoost;ham+fizik;su_isinmasi__ort_mutlak_fark;0.0013547315378673376
+RandomForest;ham+fizik+gecmis;gerilim_farki__egim;0.0013412426582198943
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__min;0.001340499008074403
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__basiklik;0.0013299510603351516
+RandomForest;ham;Velocity [km/h]__egim;0.001311478922220609
+RandomForest;ham+fizik+gecmis;bat_guc__son_ilk;0.0013105700874476356
+RandomForest;ham+fizik;Velocity [km/h]__ort_mutlak_fark;0.0013103647824500135
+RandomForest;ham+fizik;bat_guc__son_ilk;0.0013089229559734446
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__ort_mutlak_fark;0.0013067177848223885
+RandomForest;ham;Battery Temperature [°C]__ort_mutlak_fark;0.0013046895998302486
+RandomForest;ham+fizik+gecmis;bat_guc__egim;0.0012925847242243964
+RandomForest;ham+fizik;SoC [%]__std;0.0012798963756854155
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__degisim_orani;0.0012734932356653185
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__son_ilk;0.0012724339962005616
+RandomForest;ham+fizik;Battery Voltage [V]__carpiklik;0.0012663044073651442
+RandomForest;ham+fizik;Heating Power LIN [W]__ort_mutlak_fark;0.0012647540171300527
+RandomForest;ham+fizik+gecmis;gerilim_farki__son_ilk;0.0012612694794912277
+RandomForest;ham+fizik;Battery Voltage [V]__son_ilk;0.0012568684913648017
+XGBoost;ham+fizik+gecmis;gerilim_farki__egim_5dk;0.001255496230442077
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__egim;0.0012491233389045325
+RandomForest;ham+fizik+gecmis;bat_guc__basiklik;0.0012477063824059675
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__min;0.0012439346552433395
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__std;0.0012374168378300964
+RandomForest;ham+fizik;Heating Power LIN [W]__degisim_orani;0.0012372428542624277
+XGBoost;ham;Battery Current [A]__carpiklik;0.001230248808860779
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__egim;0.0012273968485580695
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__degismeden_s;0.0012271695770323277
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__son_ilk;0.0012241247878880383
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__degisim_orani;0.0012224053440149873
+RandomForest;ham+fizik;Heater Current [A]__std;0.0012137675805667925
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__degisim_orani;0.0011985886764753033
+RandomForest;ham+fizik;Battery Current [A]__carpiklik;0.0011977101846930114
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__son_ilk;0.0011962694825357475
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__degismeden_s;0.001196242158766836
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__degisim_orani;0.001195338903926313
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__egim;0.0011947713093832136
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__ort;0.0011938373558223248
+RandomForest;ham+fizik;SoC [%]__son_ilk;0.0011908877485183246
+XGBoost;ham+fizik;Heating Power LIN [W]__egim;0.0011866158805787564
+RandomForest;ham+fizik;SoC [%]__ort_mutlak_fark;0.0011809229410493993
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__ort_mutlak_fark;0.0011802116641774774
+XGBoost;ham;Battery Current [A]__basiklik;0.0011781139415688812
+RandomForest;ham+fizik;Battery Voltage [V]__basiklik;0.0011767266439876084
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__min;0.0011767013114877046
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__ort_mutlak_fark;0.0011763589708297223
+RandomForest;ham+fizik;Heating Power LIN [W]__std;0.0011714139540810445
+XGBoost;ham;Battery Temperature [°C]__std;0.001170945435296744
+RandomForest;ham+fizik;Battery Voltage [V]__egim;0.0011695199188251847
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.0011676633032038808
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__degisim_orani;0.0011668012574014273
+XGBoost;ham;Ambient Temperature [°C]__carpiklik;0.001165726489853114
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__ort;0.001158793387003243
+XGBoost;ham+fizik;Battery Current [A]__min;0.0011576462769880892
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__min;0.0011556378565728664
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.0011537098791450263
+RandomForest;ham+fizik;Heater Current [A]__ort_mutlak_fark;0.0011530683099011227
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__son_ilk;0.001150345988571644
+XGBoost;ham;Ambient Temperature [°C]__egim;0.0011493726866319775
+RandomForest;ham+fizik;gerilim_farki__carpiklik;0.0011403433763485975
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__min;0.0011402867268770934
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__son_ilk;0.0011388596962206067
+XGBoost;ham;Heating Power LIN [W]__egim;0.0011384604615159333
+RandomForest;ham+fizik;Battery Temperature [°C]__degisim_orani;0.0011372246680974945
+RandomForest;ham+fizik;gerilim_farki__basiklik;0.0011281100299069945
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__son_ilk;0.0011233285447815433
+RandomForest;ham;Heater Voltage [V]__basiklik;0.0011150403165702302
+XGBoost;ham+fizik+gecmis;su_isinmasi__ort_mutlak_fark;0.0011146031552925705
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__carpiklik;0.0010983232758007943
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__std;0.00109756650053896
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__ort;0.0010963901178911329
+RandomForest;ham+fizik+gecmis+riskli;bat_guc__son_ilk;0.001088510860053035
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__son_ilk;0.001086880234067266
+RandomForest;ham+fizik+gecmis;SoC [%]__egim;0.001086171416874255
+RandomForest;ham;Heater Current [A]__carpiklik;0.0010855133021961869
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__ort;0.0010849598329514265
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__ort_mutlak_fark;0.0010800003426903967
+RandomForest;ham+fizik+gecmis;Heater Current [A]__std;0.0010788302878666754
+RandomForest;ham;Heater Voltage [V]__egim;0.0010742149115997683
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__std;0.0010603187838569283
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__carpiklik;0.0010571632727538571
+XGBoost;ham;Heater Current [A]__carpiklik;0.0010566503158770501
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__std;0.0010536803674888464
+RandomForest;ham+fizik;Battery Temperature [°C]__ort_mutlak_fark;0.0010530898077821455
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__ort_mutlak_fark;0.001052587273103487
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__degisim_orani;0.0010485494204041912
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__std;0.001046157458431337
+RandomForest;ham+fizik+gecmis;SoC [%]__std;0.0010414787933827878
+XGBoost;ham;Heater Voltage [V]__carpiklik;0.0010408624075353146
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__basiklik;0.0010383769489053921
+XGBoost;ham+fizik;gerilim_farki__egim;0.0010349088348448276
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.0010311985168120349
+XGBoost;ham+fizik;Battery Temperature [°C]__egim;0.0010309926816262304
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__std;0.0010276832378804225
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__std;0.001020648783926545
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__carpiklik;0.0010174847054825998
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.0010168931842875505
+RandomForest;ham+fizik+gecmis;Heater Current [A]__ort_mutlak_fark;0.0010035835189590525
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.0010030032484792174
+RandomForest;ham+fizik;Velocity [km/h]__degisim_orani;0.0010012679424399912
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__min;0.0009991706465370953
+XGBoost;ham;Ambient Temperature [°C]__ort_mutlak_fark;0.0009979655500501395
+RandomForest;ham+fizik+gecmis;SoC [%]__son_ilk;0.0009964351177340614
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__std;0.0009879009099677204
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__carpiklik;0.000986970196313407
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__egim;0.0009845483716778374
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__egim;0.0009833942516706885
+XGBoost;ham;Velocity [km/h]__egim;0.000978457136079669
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__std;0.0009744168028294798
+RandomForest;ham+fizik+gecmis;gerilim_farki__basiklik;0.0009743550609970127
+RandomForest;ham;Temperature Coolant Heater Outlet [°C]__basiklik;0.0009736540996195095
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__degisim_orani;0.000971924455370754
+RandomForest;ham;Heater Current [A]__basiklik;0.0009673799831769823
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__degisim_orani;0.0009665264846541049
+RandomForest;ham+fizik+gecmis;Battery Current [A]__carpiklik;0.0009652343002908464
+XGBoost;ham;Heater Current [A]__egim;0.000959030690137297
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.0009579516307114813
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__egim;0.0009530696015427739
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__degisim_orani;0.0009500680269328788
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__son_ilk;0.0009497642257028985
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__egim;0.0009489821386523545
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__ort_mutlak_fark;0.0009462796922317359
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__son_ilk;0.0009412956373290425
+RandomForest;ham+fizik+gecmis;gerilim_farki__carpiklik;0.0009411051963335883
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.0009408251598271701
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.0009400777635164559
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__egim;0.0009391975029480228
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__degisim_orani;0.0009363685133454613
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__egim;0.0009350896072342796
+RandomForest;ham+fizik;su_isinmasi__ort_mutlak_fark;0.0009349185547628758
+RandomForest;ham+fizik+gecmis;SoC [%]__ort_mutlak_fark;0.0009288901412436275
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__carpiklik;0.0009224435093649998
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__basiklik;0.000922027335036546
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__ort_mutlak_fark;0.0009196474285702586
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__max;0.0009176790481433272
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__std;0.0009124073604057945
+XGBoost;ham+fizik;Heating Power LIN [W]__std;0.000912092812359333
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__std;0.0009110522444470833
+RandomForest;ham+fizik;Velocity [km/h]__std;0.0009109733788560595
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__max;0.0009106587152928114
+RandomForest;ham+fizik;Velocity [km/h]__son_ilk;0.0009094946686294938
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__ort_mutlak_fark;0.0009092584355596669
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__degisim_orani;0.0009091643794062705
+RandomForest;ham+fizik;isitici_guc_farki__carpiklik;0.000907471966671428
+RandomForest;ham;Heater Current [A]__egim;0.0009035052718684453
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__son_ilk;0.0009032917396729404
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__ort_mutlak_fark;0.0009010303998365998
+XGBoost;ham;Battery Voltage [V]__basiklik;0.0008967013913206756
+XGBoost;ham+fizik;bat_guc__son_ilk;0.0008945786277763546
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__egim;0.000884345293933776
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__egim;0.0008828967412904188
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__son_ilk;0.0008778010378591716
+RandomForest;ham;Heating Power LIN [W]__egim;0.0008762851661694717
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__min;0.000874247364183584
+RandomForest;ham;Heating Power LIN [W]__son_ilk;0.0008699290054499577
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__egim;0.0008685895241796971
+XGBoost;ham+fizik;Requested Heating Power [W]__degisim_orani;0.0008659175364300609
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.0008604670813432862
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__ort_mutlak_fark;0.000857297500727626
+RandomForest;ham+fizik+gecmis;su_isinmasi__ort_mutlak_fark;0.0008564996853563812
+RandomForest;ham+fizik;isitici_guc_farki__ort_mutlak_fark;0.0008557216123692996
+XGBoost;ham;Ambient Temperature [°C]__degisim_orani;0.0008549264864996075
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__std;0.0008547118864953518
+XGBoost;ham+fizik;Requested Heating Power [W]__ort_mutlak_fark;0.000854265782982111
+RandomForest;ham+fizik;isitici_guc_farki__degisim_orani;0.0008516175816411375
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__ort_mutlak_fark;0.0008513071388619254
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__ort_mutlak_fark;0.0008491773332934827
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__std;0.0008485023941622739
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.0008478413103148342
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__max;0.0008458820953452257
+XGBoost;ham;Battery Voltage [V]__son_ilk;0.0008415054529905319
+RandomForest;ham+fizik+gecmis;Battery Voltage [V]__basiklik;0.0008379721265892917
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__min;0.0008363803382962943
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__egim;0.0008339707856066525
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__std;0.0008315738989040256
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__son_ilk;0.0008308261283673346
+XGBoost;ham+fizik+gecmis;SoC [%]__std;0.0008305433380883187
+RandomForest;ham+fizik;su_isinmasi__son_ilk;0.0008303543665551629
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__son_ilk;0.0008300429475205349
+RandomForest;ham+fizik;Requested Heating Power [W]__std;0.0008275082294110645
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__egim;0.000826934947812381
+XGBoost;ham+fizik;Requested Heating Power [W]__egim;0.0008250873652286828
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__std;0.0008236135609678977
+XGBoost;ham;Heater Voltage [V]__basiklik;0.0008224926074035466
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__son_ilk;0.0008212652552523679
+XGBoost;ham+fizik;SoC [%]__std;0.0008199801610317081
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__basiklik;0.0008188676404693191
+RandomForest;ham+fizik;Battery Current [A]__basiklik;0.0008177511745561915
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__basiklik;0.0008164581974746258
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__carpiklik;0.0008144890968501198
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__degisim_orani;0.0008140137735489442
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__ort_mutlak_fark;0.0008120389444727825
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__std;0.0008117109033029618
+XGBoost;ham;Battery Current [A]__son_ilk;0.0008111567236483097
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.0008104379142627356
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__std;0.0008065131027251482
+RandomForest;ham+fizik+gecmis;su_isinmasi__son_ilk;0.0008038971509159686
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__son_ilk;0.000802989255968043
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__std;0.0008012273216409484
+RandomForest;ham;Heating Power LIN [W]__carpiklik;0.0008010783171088154
+XGBoost;ham+fizik;isitici_VI_farki__degisim_orani;0.0008005301002413035
+RandomForest;ham;SoC [%]__basiklik;0.0007970948679350638
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__max;0.0007942405180074274
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__egim;0.0007936738489661366
+XGBoost;ham+fizik;Battery Temperature [°C]__std;0.0007908531231805682
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__degisim_orani;0.0007884649850102073
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__egim;0.0007882043137215078
+RandomForest;ham;Velocity [km/h]__carpiklik;0.00078776672535818
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__egim;0.0007857755525037646
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__std;0.0007851254081202979
+XGBoost;ham;Battery Voltage [V]__carpiklik;0.0007837552577257157
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.0007758740684948862
+RandomForest;ham+fizik;isitici_VI_farki__std;0.000774339366434826
+XGBoost;ham;Heating Power LIN [W]__basiklik;0.0007736573461443186
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.0007717634469087618
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__carpiklik;0.0007715082973061426
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.0007714516422876674
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__ort_mutlak_fark;0.00077007510006375
+RandomForest;ham;Heater Voltage [V]__son_ilk;0.0007698838148666048
+RandomForest;ham;Requested Heating Power [W]__carpiklik;0.00076941351953066
+RandomForest;ham+fizik+gecmis+riskli;gerilim_farki__carpiklik;0.0007660470215740233
+XGBoost;ham+fizik+gecmis;bat_guc__son_ilk;0.0007641589618287981
+RandomForest;ham;Heating Power LIN [W]__basiklik;0.000761713689682354
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__degisim_orani;0.0007604629849083721
+RandomForest;ham+fizik;Requested Heating Power [W]__ort_mutlak_fark;0.0007602406771301364
+XGBoost;ham+fizik;Ambient Temperature [°C]__std;0.0007598408847115934
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__max;0.0007590908790007234
+XGBoost;ham+fizik;Heater Current [A]__egim;0.0007508229755330831
+XGBoost;ham;Requested Heating Power [W]__carpiklik;0.000750084186438471
+RandomForest;ham+fizik;su_isinmasi__egim;0.0007481701856098188
+RandomForest;ham+fizik+gecmis+riskli;Battery Voltage [V]__carpiklik;0.0007468270284508438
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.0007449553155087097
+RandomForest;ham;Requested Heating Power [W]__egim;0.0007447757762038317
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__std;0.0007421497165961713
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__min;0.0007413670944515615
+XGBoost;ham+fizik+gecmis;Heater Current [A]__egim;0.0007386001874692738
+XGBoost;ham;Velocity [km/h]__carpiklik;0.0007370434701442719
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__egim;0.0007361273753416283
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__son_ilk;0.0007356573932672915
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__ort_mutlak_fark;0.0007344227517023683
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__degisim_orani;0.0007317108975257725
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.0007305765739415485
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__max;0.0007235722616314888
+RandomForest;ham+fizik;Battery Current [A]__egim;0.0007218682448021595
+RandomForest;ham;SoC [%]__carpiklik;0.000721807243923364
+XGBoost;ham;Heater Voltage [V]__egim;0.0007167470059357584
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__carpiklik;0.0007160211395744279
+XGBoost;ham+fizik;Heating Power LIN [W]__degisim_orani;0.00071414407575503
+XGBoost;ham+fizik+gecmis;gerilim_farki__son_ilk;0.0007130717218387872
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__egim;0.0007127725577447564
+RandomForest;ham+fizik;Battery Current [A]__son_ilk;0.0007104154541830987
+XGBoost;ham+fizik;su_isinmasi__egim;0.0007092894986271859
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__son_ilk;0.0007063359953463078
+XGBoost;ham;SoC [%]__basiklik;0.0007049544481560587
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__son_ilk;0.0007048016762591275
+XGBoost;ham;Requested Heating Power [W]__basiklik;0.0007025268161669374
+RandomForest;ham+fizik+gecmis;Battery Current [A]__egim;0.0007011208111501861
+RandomForest;ham;Battery Temperature [°C]__std;0.0007010962770323166
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__son_ilk;0.0007010122411884367
+XGBoost;ham;Heater Voltage [V]__son_ilk;0.0007008857501205057
+XGBoost;ham;Temperature Coolant Heater Outlet [°C]__carpiklik;0.0007002135855145753
+XGBoost;ham+fizik;gerilim_farki__son_ilk;0.0006996575451921671
+XGBoost;ham+fizik;isitici_VI_farki__std;0.0006993664428591728
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__son_ilk;0.0006986493011936545
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__std;0.0006979518125386153
+RandomForest;ham+fizik+gecmis;su_isinmasi__egim;0.0006979472881642396
+RandomForest;ham+fizik+gecmis;Battery Current [A]__basiklik;0.0006948999699721327
+RandomForest;ham+fizik;Velocity [km/h]__egim;0.0006939284751769738
+XGBoost;ham+fizik;Requested Heating Power [W]__son_ilk;0.0006847376294899732
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__std;0.0006842861622012978
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__std;0.0006824356911238283
+XGBoost;ham+fizik;Velocity [km/h]__son_ilk;0.0006807690486311912
+RandomForest;ham+fizik;isitici_VI_farki__ort;0.0006783742763648314
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__ort_mutlak_fark;0.0006770435942396813
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__carpiklik;0.0006751525856088847
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__basiklik;0.0006717328447848559
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.0006696824624668807
+RandomForest;ham;Requested Heating Power [W]__basiklik;0.0006684550964092672
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.0006667475946179635
+XGBoost;ham+fizik;Requested Heating Power [W]__std;0.0006649999937508255
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__carpiklik;0.0006646803230978549
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__std;0.0006627573248361055
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__son_ilk;0.0006605847255393806
+RandomForest;ham+fizik;Requested Heating Power [W]__degisim_orani;0.0006552554798304954
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__egim;0.0006541677058079675
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__std;0.0006502743738148273
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__egim;0.0006488418322987855
+XGBoost;ham;Battery Current [A]__egim;0.0006469162530265748
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__min;0.0006429188884794712
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__std;0.0006394323601853103
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__ort_mutlak_fark;0.0006380155057272641
+XGBoost;ham+fizik;gerilim_farki__basiklik;0.0006378833670169116
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__ort_mutlak_fark;0.00063604018650949
+XGBoost;ham+fizik;Heater Current [A]__std;0.0006350728450343013
+RandomForest;ham;Temperature Coolant Heater Inlet [°C]__basiklik;0.000634666662445119
+RandomForest;ham;Velocity [km/h]__basiklik;0.0006324375410827344
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__egim;0.0006296080828178674
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.0006278573069721461
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__degisim_orani;0.0006275666796641402
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__degisim_orani;0.000624145200708881
+RandomForest;ham+fizik;Battery Temperature [°C]__std;0.0006235063711615039
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__basiklik;0.0006198996830867941
+XGBoost;ham;SoC [%]__carpiklik;0.0006195279536768794
+XGBoost;ham+fizik;Heater Current [A]__carpiklik;0.000617119634989649
+RandomForest;ham;Heater Current [A]__son_ilk;0.0006154459374331391
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__egim;0.0006150502102095423
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__std;0.0006119948229752481
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__son_ilk;0.0006111577771052782
+XGBoost;ham+fizik;isitici_guc_farki__basiklik;0.0006108848785515875
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__std;0.0006107679917477071
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__son_ilk;0.0006095879536587745
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__ort_mutlak_fark;0.0006069936945012931
+RandomForest;ham+fizik;Heater Voltage [V]__carpiklik;0.000606231201761135
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__degisim_orani;0.0006024080897831998
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__ort_mutlak_fark;0.0005997769039822742
+XGBoost;ham+fizik;Battery Current [A]__basiklik;0.0005948723468463868
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__carpiklik;0.0005938096612226218
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__degisim_orani;0.0005917221021890494
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__ort_mutlak_fark;0.0005893256792224181
+XGBoost;ham+fizik;Ambient Temperature [°C]__ort_mutlak_fark;0.0005883118661586195
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__ort_mutlak_fark;0.0005879196047317237
+RandomForest;ham+fizik+gecmis;Battery Current [A]__son_ilk;0.0005878702980833563
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.0005857691750861705
+RandomForest;ham;Requested Heating Power [W]__son_ilk;0.0005841071611534615
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__ort;0.0005816833656897745
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__std;0.0005792655341792851
+XGBoost;ham+fizik;isitici_guc_farki__std;0.0005785190791357308
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__degisim_orani;0.0005746432929299772
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__degisim_orani;0.0005737748861119154
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__egim;0.0005721459300413016
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__std;0.0005705887044314295
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__son_ilk;0.0005665756994858384
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__egim;0.000566025313743587
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.0005634177068714052
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__std;0.0005623136297799647
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__ort_mutlak_fark;0.0005601555749308318
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__son_ilk;0.0005601310709607788
+RandomForest;ham;Ambient Temperature [°C]__std;0.0005596558992136736
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__std;0.0005575186223722994
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__egim;0.0005565871833823621
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__basiklik;0.000555077416356653
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__degisim_orani;0.0005546961562401238
+XGBoost;ham;Heating Power LIN [W]__carpiklik;0.0005534796509891748
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__std;0.0005530388851184398
+XGBoost;ham;Ambient Temperature [°C]__basiklik;0.0005519029131392017
+XGBoost;ham+fizik;isitici_guc_farki__ort_mutlak_fark;0.000549630174646154
+RandomForest;ham+fizik;isitici_VI_farki__carpiklik;0.0005479848212646708
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__egim;0.000545734185281303
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__ort_mutlak_fark;0.0005452520540122942
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__std;0.0005448689659758719
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__carpiklik;0.0005409238976426423
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__degisim_orani;0.0005405769741628319
+XGBoost;ham+fizik;Ambient Temperature [°C]__egim;0.0005395431129727512
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__degisim_orani;0.0005378210567869246
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__carpiklik;0.0005362385476473719
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__std;0.000535986153408885
+RandomForest;ham+fizik;isitici_guc_farki__son_ilk;0.0005345784614401118
+RandomForest;ham+fizik;isitici_VI_farki__basiklik;0.0005341489941187327
+XGBoost;ham+fizik;Battery Voltage [V]__egim;0.0005337640293873846
+RandomForest;ham;Ambient Temperature [°C]__egim;0.0005335408021561732
+XGBoost;ham+fizik;bat_guc__basiklik;0.0005311156564857811
+XGBoost;ham;Heater Current [A]__basiklik;0.0005301751079969108
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__std;0.0005297151937540246
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__std;0.0005285025639005677
+XGBoost;ham+fizik;isitici_guc_farki__degisim_orani;0.0005236938537564129
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__std;0.0005178919935133308
+XGBoost;ham+fizik+gecmis;su_isinmasi__egim;0.0005165562353795395
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__egim;0.0005142295936821029
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__degisim_orani;0.0005139944434631616
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__degisim_orani;0.0005114695231895894
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__basiklik;0.000509489284013398
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__egim;0.0005093053378800929
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__std;0.0005085128068458289
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__degisim_orani;0.0005051781484975574
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__basiklik;0.0005013813942923906
+XGBoost;ham+fizik;Heating Power LIN [W]__ort_mutlak_fark;0.0004983225895557553
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__ort_mutlak_fark;0.0004981078847777099
+XGBoost;ham+fizik;Ambient Temperature [°C]__carpiklik;0.0004948845948092639
+XGBoost;ham+fizik+gecmis;SoC [%]__basiklik;0.0004902101180050522
+XGBoost;ham+fizik;Velocity [km/h]__std;0.0004890780837740749
+XGBoost;ham+fizik;Heater Voltage [V]__carpiklik;0.0004880292806774378
+XGBoost;ham+fizik+gecmis;Heater Current [A]__std;0.0004877853149082512
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__carpiklik;0.0004875108657870442
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__son_ilk;0.00048750230052974075
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__std;0.00048707553069107237
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__degisim_orani;0.00048637051950208845
+XGBoost;ham;Velocity [km/h]__basiklik;0.00048532621585763993
+RandomForest;ham+fizik+gecmis;isitici_guc_farki__son_ilk;0.00048258686222869596
+XGBoost;ham+fizik;Heater Voltage [V]__egim;0.00048120866413228216
+XGBoost;ham+fizik;Battery Voltage [V]__carpiklik;0.0004777693044161424
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__carpiklik;0.00047592472709029646
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__egim;0.0004726855200715363
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__min;0.0004716733088206495
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__degisim_orani;0.0004707680898718536
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.0004702266662533678
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__carpiklik;0.0004700205398640653
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__std;0.00047001763525202154
+RandomForest;ham+fizik+gecmis+riskli;Battery Current [A]__son_ilk;0.00047000664461950656
+XGBoost;ham+fizik;Ambient Temperature [°C]__degisim_orani;0.00046745858271606265
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__egim;0.0004664394189603627
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__basiklik;0.0004657647659769282
+XGBoost;ham;Coolant Volume Flow +500 [l/h]__son_ilk;0.00046529225655831394
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__max;0.0004649359354275396
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__ort;0.000464193377410993
+RandomForest;ham;Ambient Temperature [°C]__degisim_orani;0.00046110738435619703
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__min;0.0004591445699043486
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__egim;0.00045889065659139306
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__ort;0.00045853501131716014
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__carpiklik;0.00045833148540494576
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__min;0.0004580314096529037
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__basiklik;0.0004580103849523216
+RandomForest;ham+fizik;Heater Voltage [V]__basiklik;0.0004579293164041108
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__basiklik;0.0004558825574349612
+XGBoost;ham+fizik+gecmis;Heater Current [A]__carpiklik;0.0004555997293209657
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__carpiklik;0.00044950575684197245
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__ort_mutlak_fark;0.00044905176619067786
+XGBoost;ham+fizik+gecmis;gerilim_farki__basiklik;0.00044833709835074843
+XGBoost;ham+fizik;Battery Voltage [V]__son_ilk;0.0004467037419090047
+RandomForest;ham;Coolant Volume Flow +500 [l/h]__son_ilk;0.0004432625557838959
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__carpiklik;0.0004422028316184878
+XGBoost;ham+fizik;SoC [%]__basiklik;0.00043982986244373024
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__egim;0.000436652812641114
+XGBoost;ham+fizik;Battery Current [A]__egim;0.00043602202786132695
+RandomForest;ham;Ambient Temperature [°C]__ort_mutlak_fark;0.00043387281253826624
+XGBoost;ham+fizik;Heater Voltage [V]__son_ilk;0.0004325451969634742
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__carpiklik;0.0004314112360589206
+XGBoost;ham;Temperature Coolant Heater Inlet [°C]__basiklik;0.000428669000393711
+XGBoost;ham+fizik;gerilim_farki__carpiklik;0.00042819195659831165
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__egim;0.0004271862737368792
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__carpiklik;0.0004242768278345466
+XGBoost;ham+fizik;bat_guc__egim;0.00042255838052369655
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.0004223255964461714
+RandomForest;ham+fizik;Heater Current [A]__carpiklik;0.0004221090798419709
+XGBoost;ham+fizik;bat_guc__carpiklik;0.0004203148622764274
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__degisim_orani;0.0004181024149486139
+XGBoost;ham+fizik+gecmis;su_isinmasi__basiklik;0.000417865373310633
+RandomForest;ham+fizik;Heater Voltage [V]__egim;0.0004174694125250104
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__max;0.000416371461182667
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__carpiklik;0.0004151549772359431
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__basiklik;0.0004136714277904973
+XGBoost;ham+fizik+gecmis;Battery Current [A]__basiklik;0.00041340179450344294
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.00041167495655827226
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__ort;0.00040732744382694365
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__basiklik;0.00040663141829667254
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__carpiklik;0.0004040875739009447
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__carpiklik;0.00040375213138759135
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__std;0.000402533199183776
+XGBoost;ham+fizik;isitici_VI_farki__ort;0.00040040278690867126
+RandomForest;ham+fizik;Heater Current [A]__egim;0.0003978752010778251
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__basiklik;0.0003974138002377003
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.0003951914955684645
+RandomForest;ham+fizik;su_isinmasi__carpiklik;0.0003949796649753548
+XGBoost;ham+fizik+gecmis;gerilim_farki__carpiklik;0.00039466599118895827
+RandomForest;ham+fizik+gecmis+riskli;isitici_guc_farki__son_ilk;0.00039459759610624694
+RandomForest;ham+fizik;Heater Current [A]__basiklik;0.00039324693231359843
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__std;0.00039268896798603235
+XGBoost;ham+fizik+gecmis;Battery Current [A]__son_ilk;0.00039164096233434975
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__carpiklik;0.0003914629516657442
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__carpiklik;0.00039116271911098616
+RandomForest;ham+fizik;Heating Power LIN [W]__egim;0.0003908086380654036
+XGBoost;ham+fizik;Heater Voltage [V]__basiklik;0.00038931191666051744
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__egim;0.00038918585050851107
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__carpiklik;0.00038773444248363376
+XGBoost;ham+fizik;isitici_guc_farki__son_ilk;0.0003874126356095076
+XGBoost;ham+fizik+gecmis+riskli;su_isinmasi__std;0.00038618428516201675
+XGBoost;ham+fizik;isitici_VI_farki__carpiklik;0.0003857588628306985
+XGBoost;ham+fizik;isitici_guc_farki__carpiklik;0.00038404634688049555
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__basiklik;0.00038353625568561257
+XGBoost;ham+fizik;isitici_VI_farki__egim;0.00038215696695260705
+XGBoost;ham+fizik;isitici_VI_farki__basiklik;0.00038114263443276284
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__basiklik;0.00038043557903382077
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__max;0.0003794341133157488
+RandomForest;ham+fizik+gecmis;Heater Current [A]__carpiklik;0.0003756048389290321
+RandomForest;ham+fizik;Heating Power LIN [W]__son_ilk;0.00037341854953431804
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__carpiklik;0.00037261415352859734
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__ort_mutlak_fark;0.0003714373306138441
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__ort_mutlak_fark;0.0003701579174958169
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__carpiklik;0.0003667189565021545
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__basiklik;0.0003657558583654463
+RandomForest;ham+fizik;su_isinmasi__basiklik;0.0003655449771574505
+XGBoost;ham+fizik+gecmis;bat_guc__basiklik;0.00036481585702858866
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__carpiklik;0.00036444367142394183
+XGBoost;ham+fizik;Battery Current [A]__son_ilk;0.00036425370490178466
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__carpiklik;0.0003638901643004698
+XGBoost;ham+fizik;Battery Current [A]__carpiklik;0.0003632596257375553
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__basiklik;0.0003631426909799
+XGBoost;ham+fizik;Heater Current [A]__basiklik;0.000362726382445544
+RandomForest;ham+fizik;Velocity [km/h]__carpiklik;0.0003607454343333547
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__egim;0.00035979652576831865
+XGBoost;ham+fizik+gecmis;Ambient Temperature [°C]__egim;0.0003591517568565905
+XGBoost;ham+fizik;Velocity [km/h]__egim;0.0003559499251423404
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__basiklik;0.0003559081407729536
+RandomForest;ham+fizik+gecmis;Heater Current [A]__egim;0.00035403807128890207
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__basiklik;0.0003533071983838454
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__egim;0.00035138605744577944
+XGBoost;ham+fizik+gecmis;gerilim_farki__egim;0.0003497096797218546
+RandomForest;ham+fizik;Heating Power LIN [W]__carpiklik;0.0003487443026401698
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__carpiklik;0.00034812116937246176
+RandomForest;ham+fizik;isitici_VI_farki__egim;0.0003471389387733681
+XGBoost;ham+fizik;Heating Power LIN [W]__carpiklik;0.00034581589861772957
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__son_ilk;0.00034542046530518396
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__degisim_orani;0.0003452668664976954
+RandomForest;ham+fizik;Requested Heating Power [W]__egim;0.00034485404580822577
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__ort_mutlak_fark;0.0003448415722232312
+XGBoost;ham+fizik+gecmis+riskli;isitici_guc_farki__son_ilk;0.00034386938787065444
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__egim;0.00034367436310276387
+XGBoost;ham+fizik;su_isinmasi__basiklik;0.0003434478829149157
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__egim;0.0003434081668342505
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__basiklik;0.00034334462068064125
+XGBoost;ham+fizik+gecmis+riskli;Heating Power LIN [W]__basiklik;0.00034274935023859143
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__son_ilk;0.00034129484586149696
+RandomForest;ham;Ambient Temperature [°C]__carpiklik;0.00034026425164356835
+XGBoost;ham+fizik;Ambient Temperature [°C]__basiklik;0.0003392864193301648
+RandomForest;ham+fizik+gecmis;Heater Current [A]__basiklik;0.00033815030058330684
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__ort_mutlak_fark;0.000336592196004171
+RandomForest;ham+fizik;Requested Heating Power [W]__carpiklik;0.000335942064763444
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__std;0.00033516551813430386
+XGBoost;ham+fizik;Battery Voltage [V]__basiklik;0.0003343267249874771
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__degisim_orani;0.00033088211494032295
+XGBoost;ham+fizik;Requested Heating Power [W]__carpiklik;0.00033040514099411664
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__son_ilk;0.0003284797654487193
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__basiklik;0.00032786693482194095
+RandomForest;ham+fizik;Heating Power LIN [W]__basiklik;0.00032586636087655223
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__carpiklik;0.0003256800409872085
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__carpiklik;0.0003254627537636479
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__egim;0.0003240597939927933
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__basiklik;0.00032392960565630347
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__basiklik;0.0003235310025047511
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__carpiklik;0.00032332709524780513
+XGBoost;ham+fizik;su_isinmasi__carpiklik;0.00032176617241930217
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__son_ilk;0.00032161364215426146
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__egim;0.00032160864340152723
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__carpiklik;0.0003210305222044454
+RandomForest;ham+fizik+gecmis;su_isinmasi__carpiklik;0.00031971506802963145
+RandomForest;ham+fizik;SoC [%]__basiklik;0.0003191939993811494
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__egim;0.00031867743236944077
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__min;0.0003173429110065431
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__basiklik;0.00031568751437589527
+XGBoost;ham+fizik;su_isinmasi__std;0.0003151677141431719
+XGBoost;ham+fizik+gecmis+riskli;gerilim_farki__egim;0.00031450097158085554
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__basiklik;0.0003144207235891372
+RandomForest;ham+fizik;Temperature Coolant Heater Outlet [°C]__basiklik;0.0003123298558859399
+RandomForest;ham;Ambient Temperature [°C]__son_ilk;0.00031146956651728245
+RandomForest;ham;Ambient Temperature [°C]__basiklik;0.0003114231043866935
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__son_ilk;0.00031019710877444595
+XGBoost;ham+fizik;Velocity [km/h]__carpiklik;0.0003089532779995352
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__carpiklik;0.0003080429421970621
+RandomForest;ham+fizik+gecmis;su_isinmasi__basiklik;0.0003077777754758643
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__egim;0.00030776476161223875
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__egim;0.00030754534527659415
+XGBoost;ham+fizik;Ambient Temperature [°C]__son_ilk;0.0003066570498049259
+XGBoost;ham+fizik+gecmis;isitici_guc_farki__basiklik;0.0003058398811845109
+XGBoost;ham+fizik+gecmis;bat_guc__carpiklik;0.0003049675782676786
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__basiklik;0.0003040814830455929
+XGBoost;ham+fizik+gecmis+riskli;Battery Voltage [V]__carpiklik;0.00030261414940468967
+RandomForest;ham+fizik;SoC [%]__carpiklik;0.00030094062109416446
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__std;0.00029910416924394667
+XGBoost;ham+fizik;SoC [%]__carpiklik;0.0002982421690830961
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__carpiklik;0.0002979244790602861
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__carpiklik;0.00029732270458777694
+XGBoost;ham+fizik+gecmis;su_isinmasi__carpiklik;0.00029710227681789547
+RandomForest;ham+fizik;Requested Heating Power [W]__basiklik;0.00029640331539855156
+XGBoost;ham+fizik+gecmis;Battery Current [A]__egim;0.0002952909824671224
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__carpiklik;0.0002952200862159411
+RandomForest;ham+fizik;Heater Voltage [V]__son_ilk;0.0002947609414668716
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__egim;0.00029370270785875616
+XGBoost;ham+fizik;Requested Heating Power [W]__basiklik;0.0002933026698883623
+XGBoost;ham+fizik+gecmis+riskli;Battery Current [A]__carpiklik;0.00029268428625073284
+XGBoost;ham+fizik;Heating Power LIN [W]__basiklik;0.0002916503552114591
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__egim;0.00029028303005550096
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__son_ilk;0.0002901835017837584
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__carpiklik;0.0002851833385648206
+XGBoost;ham+fizik+gecmis;bat_guc__egim;0.00028474082355387507
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__basiklik;0.0002839548804331571
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__carpiklik;0.0002837957120017596
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__egim;0.0002835835617578579
+RandomForest;ham+fizik;Ambient Temperature [°C]__std;0.0002835283903835521
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__carpiklik;0.00028253711425237104
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__basiklik;0.0002823916991474107
+RandomForest;ham+fizik+gecmis;Heating Power LIN [W]__basiklik;0.00028223434044867676
+RandomForest;ham+fizik;Requested Heating Power [W]__son_ilk;0.00028138213712685197
+RandomForest;ham+fizik;Temperature Coolant Heater Inlet [°C]__basiklik;0.0002812085602559686
+RandomForest;ham;Battery Temperature [°C]__egim;0.00027945319303902713
+RandomForest;ham+fizik;Heater Current [A]__son_ilk;0.0002775302906021373
+XGBoost;ham+fizik+gecmis;Heater Current [A]__basiklik;0.000276007765205577
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__egim;0.0002743242099128829
+RandomForest;ham+fizik+gecmis;SoC [%]__basiklik;0.00027309335881311797
+RandomForest;ham+fizik;Velocity [km/h]__basiklik;0.00026849438250682204
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__basiklik;0.0002681077456545492
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__egim;0.0002669905836228281
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__carpiklik;0.0002641183876789087
+XGBoost;ham+fizik+gecmis;Battery Voltage [V]__egim;0.0002634531352669001
+RandomForest;ham+fizik;Ambient Temperature [°C]__egim;0.00026242334984309483
+XGBoost;ham+fizik;Temperature Coolant Heater Outlet [°C]__basiklik;0.0002609072747873142
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__egim;0.0002604100174540106
+XGBoost;ham+fizik+gecmis+riskli;bat_guc__carpiklik;0.0002595650352304801
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__basiklik;0.0002588131566934721
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__carpiklik;0.00025806358607951554
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__egim;0.00025725018786033617
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__carpiklik;0.00025718776164280745
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__basiklik;0.0002560430351877585
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__basiklik;0.0002548474679116672
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__carpiklik;0.00025325040332973
+XGBoost;ham+fizik+gecmis+riskli;Velocity [km/h]__basiklik;0.0002525098068872467
+RandomForest;ham+fizik+gecmis;SoC [%]__carpiklik;0.00025047627538354097
+XGBoost;ham+fizik+gecmis;Battery Current [A]__carpiklik;0.0002488776866812259
+RandomForest;ham+fizik+gecmis;Heater Voltage [V]__son_ilk;0.0002488010953126734
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__std;0.0002487870049662888
+XGBoost;ham+fizik+gecmis;Requested Heating Power [W]__carpiklik;0.00024820746621116995
+XGBoost;ham+fizik;Velocity [km/h]__basiklik;0.0002476233377819881
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__carpiklik;0.00024612708523081347
+RandomForest;ham+fizik;isitici_VI_farki__son_ilk;0.00024487977298170386
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__egim;0.0002446622180286795
+RandomForest;ham+fizik+gecmis;Heater Current [A]__son_ilk;0.0002431867014831641
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__std;0.00024278498848474302
+RandomForest;ham+fizik+gecmis;Requested Heating Power [W]__son_ilk;0.00024214705487935633
+RandomForest;ham+fizik+gecmis+riskli;Heater Current [A]__son_ilk;0.00024034458462024273
+XGBoost;ham+fizik+gecmis+riskli;Requested Heating Power [W]__carpiklik;0.00023772225249558688
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__basiklik;0.00023550326475052624
+XGBoost;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__basiklik;0.00023528935853391885
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__son_ilk;0.00023417974104641422
+RandomForest;ham+fizik+gecmis+riskli;su_isinmasi__basiklik;0.00023414803556376617
+RandomForest;ham+fizik+gecmis+riskli;Heating Power LIN [W]__carpiklik;0.00023413257164151512
+RandomForest;ham+fizik+gecmis;Velocity [km/h]__basiklik;0.00023334686911043466
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__basiklik;0.00023279448505491017
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__carpiklik;0.00023247880872907166
+RandomForest;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__basiklik;0.00023166409837792603
+XGBoost;ham+fizik+gecmis;su_isinmasi__std;0.00023090449976734818
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__egim;0.00022857213290030667
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__egim;0.00022744905583958896
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__carpiklik;0.0002248074726346476
+XGBoost;ham+fizik+gecmis;Velocity [km/h]__basiklik;0.00022452934354078025
+XGBoost;ham+fizik+gecmis;SoC [%]__carpiklik;0.000223989924415946
+RandomForest;ham+fizik+gecmis+riskli;Requested Heating Power [W]__basiklik;0.00021994663547518536
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__carpiklik;0.00021992207039147615
+XGBoost;ham+fizik+gecmis;Heating Power LIN [W]__basiklik;0.00021929483045823872
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__basiklik;0.0002187667938414961
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__carpiklik;0.00021846141612921863
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__carpiklik;0.00021811715560033919
+RandomForest;ham+fizik;Ambient Temperature [°C]__degisim_orani;0.00021695279899034626
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__basiklik;0.00021290894584154751
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__egim;0.0002120719474705191
+RandomForest;ham+fizik+gecmis+riskli;SoC [%]__carpiklik;0.00021147325751052275
+XGBoost;ham+fizik+gecmis+riskli;Heater Current [A]__basiklik;0.00021023749723099173
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Outlet [°C]__basiklik;0.00020875807676929982
+XGBoost;ham+fizik;Coolant Volume Flow +500 [l/h]__son_ilk;0.0002072199684334919
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__std;0.00020697467992384792
+RandomForest;ham+fizik;Ambient Temperature [°C]__ort_mutlak_fark;0.00020661998475288563
+XGBoost;ham+fizik+gecmis;Heater Voltage [V]__son_ilk;0.00020506681757979096
+RandomForest;ham+fizik+gecmis;isitici_VI_farki__son_ilk;0.00020447851889423643
+XGBoost;ham+fizik;isitici_VI_farki__son_ilk;0.00019894192519132048
+RandomForest;ham+fizik;Battery Temperature [°C]__egim;0.00019872002290350553
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Outlet [°C]__basiklik;0.00019847547035654672
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__degisim_orani;0.00019643687643704748
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__egim;0.00019621045024868214
+XGBoost;ham+fizik+gecmis+riskli;Heater Voltage [V]__son_ilk;0.00019396668067201973
+XGBoost;ham+fizik+gecmis+riskli;SoC [%]__carpiklik;0.00019385699852136895
+XGBoost;ham+fizik;Battery Temperature [°C]__basiklik;0.00019169265578966588
+RandomForest;ham+fizik+gecmis+riskli;Heater Voltage [V]__son_ilk;0.0001909348409950622
+XGBoost;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__basiklik;0.00018981255125254392
+XGBoost;ham+fizik;Temperature Coolant Heater Inlet [°C]__basiklik;0.00018968619115184994
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__std;0.0001886078913230449
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__ort_mutlak_fark;0.0001880444286848695
+RandomForest;ham+fizik+gecmis+riskli;Temperature Coolant Heater Inlet [°C]__basiklik;0.0001865506897289039
+XGBoost;ham+fizik+gecmis;isitici_VI_farki__son_ilk;0.00018574783607618883
+RandomForest;ham+fizik+gecmis+riskli;Velocity [km/h]__basiklik;0.00018357455327891236
+XGBoost;ham+fizik+gecmis+riskli;isitici_VI_farki__son_ilk;0.00017956473748199643
+XGBoost;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__son_ilk;0.00017857671773526817
+RandomForest;ham;Battery Temperature [°C]__son_ilk;0.0001764430432395502
+RandomForest;ham+fizik;Coolant Volume Flow +500 [l/h]__son_ilk;0.00017320118933251296
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__egim;0.0001704244964525154
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__basiklik;0.00016999860818032176
+XGBoost;ham+fizik+gecmis;Temperature Coolant Heater Inlet [°C]__carpiklik;0.00016980909131234512
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__egim;0.0001665401443779404
+RandomForest;ham+fizik+gecmis+riskli;isitici_VI_farki__son_ilk;0.00016346804753360487
+RandomForest;ham+fizik;Ambient Temperature [°C]__carpiklik;0.00015924126136167746
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__degisim_orani;0.00015645888883411324
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__egim;0.00015571488609719832
+RandomForest;ham+fizik;Ambient Temperature [°C]__son_ilk;0.00015288624184252525
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__carpiklik;0.00014991466305218636
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__ort_mutlak_fark;0.00014937399600861706
+RandomForest;ham;Battery Temperature [°C]__carpiklik;0.0001485655209060067
+RandomForest;ham+fizik;Ambient Temperature [°C]__basiklik;0.00014402572051643757
+RandomForest;ham;Battery Temperature [°C]__basiklik;0.00014282357151363499
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__carpiklik;0.00013837444061840296
+RandomForest;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__son_ilk;0.00013791827851565396
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__son_ilk;0.00013583524371124357
+RandomForest;ham+fizik;Battery Temperature [°C]__son_ilk;0.00013534699171325278
+XGBoost;ham+fizik+gecmis;Coolant Volume Flow +500 [l/h]__son_ilk;0.00013406461221165955
+RandomForest;ham+fizik+gecmis;Ambient Temperature [°C]__basiklik;0.00012459625965059626
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__son_ilk;0.00011676717829481067
+RandomForest;ham+fizik+gecmis+riskli;Coolant Volume Flow +500 [l/h]__son_ilk;0.00011597430545834237
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__carpiklik;0.00011583588650677494
+XGBoost;ham+fizik+gecmis+riskli;Battery Temperature [°C]__basiklik;0.00011519859544932843
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__son_ilk;0.00011262565933308085
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__son_ilk;0.000109245515279412
+XGBoost;ham;Battery Temperature [°C]__carpiklik;0.00010862023918889463
+RandomForest;ham+fizik;Battery Temperature [°C]__basiklik;0.00010571528302208278
+RandomForest;ham+fizik;Battery Temperature [°C]__carpiklik;0.0001054458785462335
+RandomForest;ham+fizik+gecmis+riskli;Ambient Temperature [°C]__basiklik;0.0001052021887987751
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__basiklik;9.601188043100612e-05
+RandomForest;ham+fizik+gecmis;Battery Temperature [°C]__carpiklik;9.212524747984614e-05
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__basiklik;8.39377025831626e-05
+RandomForest;ham+fizik+gecmis+riskli;Battery Temperature [°C]__carpiklik;8.136063964114454e-05
+XGBoost;ham;Battery Temperature [°C]__basiklik;7.596439681947231e-05
+XGBoost;ham+fizik+gecmis;Battery Temperature [°C]__carpiklik;1.8670632562134416e-05
+XGBoost;ham+fizik;Battery Temperature [°C]__carpiklik;0.0
