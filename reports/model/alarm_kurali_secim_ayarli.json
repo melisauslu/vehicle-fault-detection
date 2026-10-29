@@ -1,0 +1,17 @@
+{
+ "tespit_hedefi": 0.95,
+ "yanlis_alarm_hedefi": 1.0,
+ "set": "ham+fizik+gecmis",
+ "N": {
+  "IsolationForest": null,
+  "RandomForest": 9,
+  "SVM": 15,
+  "XGBoost": 13
+ },
+ "gerekce": {
+  "IsolationForest": "hiçbir N'de %95 tespit koşulu sağlanamadı → N seçilmedi",
+  "RandomForest": "yanlış alarm hedefine ulaşılamadı → tespit koşulunu sağlayan en büyük N",
+  "SVM": "yanlış alarm hedefine ulaşılamadı → tespit koşulunu sağlayan en büyük N",
+  "XGBoost": "yanlış alarm hedefine ulaşan en küçük N"
+ }
+}
