@@ -1,7 +1,16 @@
 import json
 import os
+import time
 import numpy as np
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier, IsolationForest
+from sklearn.svm import SVC
+from sklearn.pipeline import make_pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.utils.class_weight import compute_sample_weight
+from xgboost import XGBClassifier
 
 # Bütün model kodlarının ortak kullandığı fonksiyonlar.
 # VERİ SIZINTISI KURALI: veriden öğrenilen her şey (sabitler, normalizasyon, model) yalnızca o katın
@@ -9,7 +18,95 @@ import pandas as pd
 
 ANA_KLASOR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(ANA_KLASOR, "data", "model")
+EN_IYI_PARAMETRELER = os.path.join(ANA_KLASOR, "reports", "model", "hiperparametre_en_iyi.json")
 DT = 0.1
+SEED = 42
+# SVM eğitim süresi örnek sayısının ~karesiyle büyüdüğü için her katta en fazla bu kadar eğitim penceresiyle
+# (sınıf oranları korunarak) eğitilir — laptopta makul süre için (BİZİM KARARIMIZ, tezde belirtilmeli)
+SVM_MAKS_ORNEK = 12000
+# Isolation Forest alarm eşiği: sağlam kalibrasyon pencerelerinin %1'i alarm verecek şekilde (BİZİM KARARIMIZ)
+IF_YANLIS_ALARM = 0.01
+
+
+# ============================================================================
+# MODELLER — ml_modeller.py, hiperparametre_ayari.py ve sinyal_onemi.py HEPSİ bunları kullanır,
+# böylece her kod birebir aynı modeli aynı şekilde eğitir.
+# ============================================================================
+def model_kur(ad, parametreler=None):
+    # Varsayılan ayarlar (yaygın değerler); parametreler verilirse (hiperparametre ayarından) üzerine yazılır.
+    # Parametre adları set_params biçiminde: boru hattındaki adımın adı + "__" + parametre (ör. svc__C)
+    if ad == "RandomForest":
+        # boş değerler (ör. direnc_orani, akım az değişince) eğitimin ortancasıyla doldurulur + "boştu" işareti
+        m = make_pipeline(SimpleImputer(strategy="median", add_indicator=True),
+                          RandomForestClassifier(n_estimators=300, class_weight="balanced",
+                                                 n_jobs=-1, random_state=SEED))
+    elif ad == "XGBoost":
+        # XGBoost boş değerlerle kendisi çalışabilir
+        m = XGBClassifier(n_estimators=300, max_depth=6, learning_rate=0.1, tree_method="hist",
+                          n_jobs=-1, random_state=SEED)
+    elif ad == "SVM":
+        # SVM ölçeğe duyarlı → normalizasyon (StandardScaler) yalnızca eğitimde öğrenilir (sızıntı kuralı 2)
+        m = make_pipeline(SimpleImputer(strategy="median", add_indicator=True), StandardScaler(),
+                          SVC(C=10, gamma="scale", class_weight="balanced"))
+    elif ad == "IsolationForest":
+        m = make_pipeline(SimpleImputer(strategy="median"),
+                          IsolationForest(n_estimators=300, random_state=SEED, n_jobs=-1))
+    else:
+        raise ValueError(ad)
+    if parametreler:
+        m.set_params(**parametreler)
+    return m
+
+
+def denetimli_egit_tahmin(ad, model, X_tr, y_tr, X_va):
+    # Denetimli modeli eğitir, doğrulama pencerelerini tahmin eder → (tahmin edilen sınıf adları, eğitim s, ms/pencere)
+    t0 = time.time()
+    if ad == "SVM" and len(X_tr) > SVM_MAKS_ORNEK:
+        Xs, _, ys, _ = train_test_split(X_tr, y_tr, train_size=SVM_MAKS_ORNEK, stratify=y_tr, random_state=SEED)
+        model.fit(Xs, ys)
+    elif ad == "XGBoost":
+        # XGBoost sütun adlarında "[ ]" kabul etmiyor → sayı dizisi olarak verilir (sıra aynı)
+        # XGBoost sınıfları 0..k−1 sayıları ister → bu katın eğitimindeki sınıflar numaralanır
+        egitim_siniflari = np.unique(y_tr)
+        model.fit(np.asarray(X_tr), np.searchsorted(egitim_siniflari, y_tr),
+                  sample_weight=compute_sample_weight("balanced", y_tr))   # sınıf dengesizliği
+    else:
+        model.fit(X_tr, y_tr)
+    egitim_s = time.time() - t0
+    t0 = time.time()
+    tahmin = model.predict(np.asarray(X_va) if ad == "XGBoost" else X_va)
+    tahmin_ms = (time.time() - t0) / len(X_va) * 1000
+    if ad == "XGBoost":
+        tahmin = egitim_siniflari[tahmin]
+    return tahmin, egitim_s, tahmin_ms
+
+
+def if_egit_skor(model, X_ogren, X_kalib, X_va):
+    # Isolation Forest: yalnızca SAĞLAM pencerelerle öğrenir; eşik, ayrı sağlam kalibrasyon pencerelerinden
+    # (doğrulamaya bakılmaz) → (eşik, doğrulama anormallik skorları [büyük = anormal], eğitim s, ms/pencere)
+    t0 = time.time()
+    model.fit(X_ogren)
+    egitim_s = time.time() - t0
+    esik = np.quantile(-model.decision_function(X_kalib), 1 - IF_YANLIS_ALARM)
+    t0 = time.time()
+    skor = -model.decision_function(X_va)
+    tahmin_ms = (time.time() - t0) / len(X_va) * 1000
+    return esik, skor, egitim_s, tahmin_ms
+
+
+def if_kalibrasyon_bolmesi(o, egitim):
+    # Isolation Forest için eğitim sürüşlerinin sağlam pencereleri ikiye ayrılır: ilk eğitim katı → eşik
+    # kalibrasyonu, diğerleri → öğrenme (eşik, modeli öğrendiği pencerelerle belirlenmesin diye)
+    egitim_katlari = sorted(o.loc[egitim, "kat"].unique())
+    kalib = egitim & (o["kat"] == egitim_katlari[0]) & (o["ariza"] == 0)
+    ogren = egitim & (o["kat"] != egitim_katlari[0]) & (o["ariza"] == 0)
+    return ogren, kalib
+
+
+def en_iyi_parametreleri_oku():
+    # hiperparametre_ayari.py'nin seçtiği ayarlar (yoksa hata: önce o kod çalışmalı)
+    with open(EN_IYI_PARAMETRELER, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def veriyi_oku():

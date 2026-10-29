@@ -8,7 +8,7 @@ from ortak import ANA_KLASOR
 
 # ml_modeller.py'nin ürettiği sonuçları ayrı bir klasöre kopyalar (bir sonraki çalıştırma üzerine yazmasın diye).
 # Kullanım: ETIKET'i değiştir, çalıştır. Asıl dosyalar silinmez, yalnızca kopyalanır.
-ETIKET = "uzun_gecmis"        # ör. "baslangic", "yeni_ozellikler", "ayarli"
+ETIKET = "varsayilan"        # ör. "baslangic", "yeni_ozellikler", "ayarli"
 
 hedef = os.path.join(ANA_KLASOR, "reports", "model", ETIKET)
 if os.path.exists(hedef):

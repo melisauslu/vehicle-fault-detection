@@ -1,0 +1,27 @@
+{
+ "RandomForest": {
+  "randomforestclassifier__n_estimators": 500,
+  "randomforestclassifier__min_samples_leaf": 5,
+  "randomforestclassifier__max_features": "sqrt",
+  "randomforestclassifier__max_depth": 30,
+  "randomforestclassifier__class_weight": "balanced"
+ },
+ "XGBoost": {
+  "colsample_bytree": 1.0,
+  "learning_rate": 0.1601531217136121,
+  "max_depth": 3,
+  "min_child_weight": 10,
+  "n_estimators": 500,
+  "reg_lambda": 3.804968634158325,
+  "subsample": 1.0
+ },
+ "SVM": {
+  "svc__C": 213.6832907235874,
+  "svc__gamma": 0.0004335281794951569
+ },
+ "IsolationForest": {
+  "isolationforest__n_estimators": 500,
+  "isolationforest__max_samples": 4096,
+  "isolationforest__max_features": 0.5
+ }
+}

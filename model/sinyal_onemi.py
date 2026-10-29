@@ -3,15 +3,11 @@ import sys
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.pipeline import make_pipeline
-from sklearn.impute import SimpleImputer
 from sklearn.metrics import f1_score
-from sklearn.utils.class_weight import compute_sample_weight
-from xgboost import XGBClassifier
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ortak import ANA_KLASOR, veriyi_oku, bolmeler, kat_sabitleri, fizik_ekle, ozellik_listesi, sensoru_kullanir
+from ortak import (ANA_KLASOR, SEED, veriyi_oku, bolmeler, kat_sabitleri, fizik_ekle, ozellik_listesi,
+                   sensoru_kullanir, model_kur, denetimli_egit_tahmin, en_iyi_parametreleri_oku)
 
 RAPOR = os.path.join(ANA_KLASOR, "reports", "model")
 
@@ -30,20 +26,11 @@ RAPOR = os.path.join(ANA_KLASOR, "reports", "model")
 # ============================================================================
 # AYARLAR
 # ============================================================================
-MODEL = "XGBoost"           # "XGBoost" ya da "RandomForest" (ayarlar ml_modeller.py ile aynı)
+MODEL = "XGBoost"           # "XGBoost" ya da "RandomForest" (model ortak.py/model_kur'dan, ml_modeller.py ile aynı)
+AYARLI = False              # True → hiperparametre_ayari.py'nin seçtiği ayarlar
 OZELLIK_GRUPLARI = ["ham_istatistik", "fizik_dusuk", "uzun_gecmis"]   # ana sonuç seti
 SET_ADI = "ham+fizik+gecmis"
 TEKRAR = 3                  # her sensör kaç kez karıştırılıp ortalaması alınır
-SEED = 42
-
-
-def model_kur(ad):
-    if ad == "RandomForest":
-        return make_pipeline(SimpleImputer(strategy="median", add_indicator=True),
-                             RandomForestClassifier(n_estimators=300, class_weight="balanced",
-                                                    n_jobs=-1, random_state=SEED))
-    return XGBClassifier(n_estimators=300, max_depth=6, learning_rate=0.1, tree_method="hist",
-                         n_jobs=-1, random_state=SEED)
 
 
 oz, bilgi = veriyi_oku()
@@ -60,12 +47,9 @@ for k, (egitim, dogrulama) in enumerate(cv):
     o = fizik_ekle(oz, kat_sabitleri(oz, egitim, bilgi))
     X_tr, X_va = o.loc[egitim, kolonlar].to_numpy(), o.loc[dogrulama, kolonlar].to_numpy()
     y_tr, y_va = o.loc[egitim, "ariza_tipi"].to_numpy(), o.loc[dogrulama, "ariza_tipi"].to_numpy()
-    model = model_kur(MODEL)
-    if MODEL == "XGBoost":
-        egitim_siniflari = np.unique(y_tr)                    # XGBoost sınıfları 0..k−1 sayıları ister
-        model.fit(X_tr, np.searchsorted(egitim_siniflari, y_tr), sample_weight=compute_sample_weight("balanced", y_tr))
-    else:
-        model.fit(X_tr, y_tr)
+    model = model_kur(MODEL, en_iyi_parametreleri_oku().get(MODEL) if AYARLI else None)
+    taban_tahmin, _, _ = denetimli_egit_tahmin(MODEL, model, X_tr, y_tr, X_va)
+    egitim_siniflari = np.unique(y_tr)                        # XGBoost sınıf numarası → ad (ortak.py ile aynı)
 
     def tahmin(X):
         t = model.predict(X)
@@ -75,7 +59,7 @@ for k, (egitim, dogrulama) in enumerate(cv):
         return (f1_score(y_va, t, labels=siniflar, average="macro", zero_division=0),
                 f1_score(y_va, t, labels=siniflar, average=None, zero_division=0))
 
-    taban_macro, taban_sinif = skorlar(tahmin(X_va))
+    taban_macro, taban_sinif = skorlar(taban_tahmin)
     print(f"kat{k}: karıştırmadan macro-F1 = {taban_macro:.3f}")
     for s, cols in gruplar.items():
         idx = [kolonlar.index(c) for c in cols]
