@@ -9,6 +9,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import f1_score, precision_score, recall_score
 from sklearn.utils.class_weight import compute_sample_weight
 from xgboost import XGBClassifier
 
@@ -101,6 +102,26 @@ def if_kalibrasyon_bolmesi(o, egitim):
     kalib = egitim & (o["kat"] == egitim_katlari[0]) & (o["ariza"] == 0)
     ogren = egitim & (o["kat"] != egitim_katlari[0]) & (o["ariza"] == 0)
     return ogren, kalib
+
+
+# Değerlendirme ölçütleri — ML (ml_modeller.py) ve DL (dl_modeller.py) BİREBİR aynı fonksiyonu kullanır
+def degerlendir(meta, gercek, tahmin, adim_s):
+    # meta: doğrulama pencerelerinin bilgileri; gercek/tahmin: sınıf adları ("saglam" ya da arıza tipi)
+    g_ariza, t_ariza = gercek != "saglam", tahmin != "saglam"
+    yanlis_alarm = np.sum(~g_ariza & t_ariza)
+    saglam_saat = np.sum(~g_ariza) * adim_s / 3600            # her pencere 5 s'lik yeni bir zamanı temsil eder
+    # tespit gecikmesi: her arızalı dosyada ilk alarmın, arıza başladıktan kaç saniye sonra verildiği
+    d = meta.assign(alarm=t_ariza)[g_ariza]
+    ilk = d[d["alarm"]].groupby("dosya")["ariza_suresi_s"].min()
+    return {
+        "tespit_precision": precision_score(g_ariza, t_ariza, zero_division=0),
+        "tespit_recall": recall_score(g_ariza, t_ariza, zero_division=0),
+        "tespit_f1": f1_score(g_ariza, t_ariza, zero_division=0),
+        "yanlis_alarm_orani": yanlis_alarm / max(np.sum(~g_ariza), 1),
+        "yanlis_alarm_saatte": yanlis_alarm / max(saglam_saat, 1e-9),
+        "tespit_edilen_dosya_orani": len(ilk) / max(d["dosya"].nunique(), 1),
+        "tespit_gecikmesi_ortanca_s": float(ilk.median()) if len(ilk) else np.nan,
+    }
 
 
 def en_iyi_parametreleri_oku():

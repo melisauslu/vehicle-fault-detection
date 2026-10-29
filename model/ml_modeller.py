@@ -4,11 +4,12 @@ import sys
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.metrics import f1_score, precision_score, recall_score, confusion_matrix, roc_auc_score
+from sklearn.metrics import f1_score, confusion_matrix, roc_auc_score
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ortak import (ANA_KLASOR, veriyi_oku, bolmeler, kat_sabitleri, fizik_ekle, ozellik_listesi, model_kur,
-                   denetimli_egit_tahmin, if_egit_skor, if_kalibrasyon_bolmesi, en_iyi_parametreleri_oku)
+                   denetimli_egit_tahmin, if_egit_skor, if_kalibrasyon_bolmesi, en_iyi_parametreleri_oku,
+                   degerlendir)
 
 RAPOR = os.path.join(ANA_KLASOR, "reports", "model")
 TAHMIN = os.path.join(ANA_KLASOR, "data", "model")
@@ -37,29 +38,10 @@ CIKARILAN_SINYALLER = []
 # Model ayarları (modellerin kendisi ortak.py/model_kur'da):
 #   False → varsayılan ayarlar (yaygın değerler; hiçbir ayar doğrulama/test sonucuna bakılarak seçilmedi)
 #   True  → hiperparametre_ayari.py'nin çapraz doğrulamayla seçtiği ayarlar (reports/model/hiperparametre_en_iyi.json)
-AYARLI = True
+AYARLI = False
 
 # Son test (7 sürüş) YALNIZCA bütün kararlar bittikten sonra, bir kez True yapılır (sızıntı kuralı 6)
 SON_TEST = False
-
-
-def degerlendir(meta, gercek, tahmin, adim_s):
-    # meta: doğrulama pencerelerinin bilgileri; gercek/tahmin: sınıf adları ("saglam" ya da arıza tipi)
-    g_ariza, t_ariza = gercek != "saglam", tahmin != "saglam"
-    yanlis_alarm = np.sum(~g_ariza & t_ariza)
-    saglam_saat = np.sum(~g_ariza) * adim_s / 3600            # her pencere 5 s'lik yeni bir zamanı temsil eder
-    # tespit gecikmesi: her arızalı dosyada ilk alarmın, arıza başladıktan kaç saniye sonra verildiği
-    d = meta.assign(alarm=t_ariza)[g_ariza]
-    ilk = d[d["alarm"]].groupby("dosya")["ariza_suresi_s"].min()
-    return {
-        "tespit_precision": precision_score(g_ariza, t_ariza, zero_division=0),
-        "tespit_recall": recall_score(g_ariza, t_ariza, zero_division=0),
-        "tespit_f1": f1_score(g_ariza, t_ariza, zero_division=0),
-        "yanlis_alarm_orani": yanlis_alarm / max(np.sum(~g_ariza), 1),
-        "yanlis_alarm_saatte": yanlis_alarm / max(saglam_saat, 1e-9),
-        "tespit_edilen_dosya_orani": len(ilk) / max(d["dosya"].nunique(), 1),
-        "tespit_gecikmesi_ortanca_s": float(ilk.median()) if len(ilk) else np.nan,
-    }
 
 
 # ============================================================================
