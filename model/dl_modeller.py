@@ -7,9 +7,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import f1_score, confusion_matrix, roc_auc_score
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+BURASI = os.path.dirname(os.path.abspath(__file__))
+sys.path[:0] = [BURASI, os.path.dirname(BURASI)]   # model/ ya da model/dl/ içinden çalışır (ortak.py bir üstte olabilir)
 from ortak import ANA_KLASOR, SEED, veriyi_oku, bolmeler, degerlendir
-from dl_ortak import (CIHAZ, VARSAYILAN, ham_dizileri_oku, kat_verisi, egit_ve_tahmin_et, en_iyi_parametreleri_oku,
+from dl_ortak import (CIHAZ, VARSAYILAN, SURUM_EKI, ON_ISLEME, EPOCH, SABIR, ham_dizileri_oku, kat_verisi,
+                      egit_ve_tahmin_et, en_iyi_parametreleri_oku,
                       atomik_csv)
 
 RAPOR = os.path.join(ANA_KLASOR, "reports", "model")
@@ -36,7 +38,7 @@ assert len(X_ham) == len(oz), "pencereler_ham.npz ile pencereler_ozellik.csv uyu
 cv, son = bolmeler(oz)
 adim_s = bilgi["adim_satir"] * 0.1
 siniflar = sorted(oz["ariza_tipi"].unique())
-ek = ("_ayarli" if AYARLI else "") + ("_son_test" if SON_TEST else "")
+ek = SURUM_EKI + ("_ayarli" if AYARLI else "") + ("_son_test" if SON_TEST else "")
 PARCA = os.path.join(TAHMIN, f"dl_parcalar{ek}")
 os.makedirs(PARCA, exist_ok=True)
 os.makedirs(RAPOR, exist_ok=True)
@@ -48,6 +50,7 @@ else:
     bolme_listesi = [(f"kat{i}", tr.to_numpy(), va.to_numpy()) for i, (tr, va) in enumerate(cv)]
 parametreler = en_iyi_parametreleri_oku() if AYARLI else {}
 modeller = DENETIMLI + DENETIMSIZ
+print(f"Ön işleme: {ON_ISLEME} (en fazla {EPOCH} epoch, sabır {SABIR})")
 print(f"Cihaz: {CIHAZ}   Model ayarları: {'AYARLI (dl_hiperparametre_en_iyi.json)' if AYARLI else 'varsayılan'}")
 for ad in modeller:
     p = parametreler.get(ad)

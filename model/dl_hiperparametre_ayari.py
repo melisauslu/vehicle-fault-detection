@@ -8,19 +8,21 @@ from scipy.stats import loguniform
 from sklearn.model_selection import ParameterSampler
 from sklearn.metrics import f1_score, roc_auc_score
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+BURASI = os.path.dirname(os.path.abspath(__file__))
+sys.path[:0] = [BURASI, os.path.dirname(BURASI)]   # model/ ya da model/dl/ içinden çalışır (ortak.py bir üstte olabilir)
 from ortak import ANA_KLASOR, SEED, veriyi_oku, bolmeler
-from dl_ortak import (CIHAZ, VARSAYILAN, DL_EN_IYI_PARAMETRELER, ham_dizileri_oku, kat_verisi, egit_ve_tahmin_et,
+from dl_ortak import (CIHAZ, VARSAYILAN, SURUM_EKI, ON_ISLEME, EPOCH, SABIR, DL_EN_IYI_PARAMETRELER,
+                      ham_dizileri_oku, kat_verisi, egit_ve_tahmin_et,
                       atomik_csv)
 
 RAPOR = os.path.join(ANA_KLASOR, "reports", "model")
-KATLAR = os.path.join(RAPOR, "dl_hiperparametre_katlar.csv")          # her (model, deneme, kat) bir satır
-DENEMELER = os.path.join(RAPOR, "dl_hiperparametre_denemeleri.csv")   # katların ortalaması (her seferinde yeniden)
+KATLAR = os.path.join(RAPOR, f"dl_hiperparametre_katlar{SURUM_EKI}.csv")          # her (model, deneme, kat) bir satır
+DENEMELER = os.path.join(RAPOR, f"dl_hiperparametre_denemeleri{SURUM_EKI}.csv")   # katların ortalaması (her seferinde yeniden)
 
 # DL İÇİN EŞİT BÜTÇELİ HİPERPARAMETRE AYARI — hiperparametre_ayari.py (ML) ile AYNI yöntem:
 #   rastgele arama [Bergstra & Bengio 2012], model başına aynı deneme sayısı, deneme 0 = varsayılan,
 #   ölçüt: 5 katın ortalama macro-F1'i (Autoencoder: AUC), ana set (ham+fizik+gecmis), test sürüşlerine dokunulmaz.
-# KALDIĞI YERDEN DEVAM: her (model, deneme, kat) bittiği anda dl_hiperparametre_katlar.csv'ye bir satır eklenir.
+# KALDIĞI YERDEN DEVAM: her (model, deneme, kat) bittiği anda dl_hiperparametre_katlar<sürüm>.csv'ye bir satır eklenir.
 #   Tekrar çalıştırınca var olan satırlar atlanır → kesilirse en fazla o an eğitilen TEK kat baştan yapılır.
 # DİKKAT: ARAMA_UZAYI, DENEME_SAYISI veya SEED değiştirilirse deneme listesi değişir; o zaman eski CSV'ler
 #   silinmeli/yeniden adlandırılmalı (yoksa eski sonuçlar yeni denemelerle karışır).
@@ -75,6 +77,7 @@ def bitenler():
     return set(zip(d["model"], d["deneme"].astype(int), d["kat"].astype(int)))
 
 
+print(f"Ön işleme: {ON_ISLEME} (en fazla {EPOCH} epoch, sabır {SABIR})")
 print(f"Cihaz: {CIHAZ}   Set: {SET}   Model başına {DENEME_SAYISI} deneme × {len(cv)} kat")
 print(f"Ara sonuçlar: {KATLAR} (kesilirse kaldığı yerden devam eder)\n")
 biten = bitenler()
@@ -138,5 +141,5 @@ print(pd.DataFrame(satirlar).round(3).to_string(index=False))
 print("\nSeçilen ayarlar:")
 for ad, p in en_iyi.items():
     print(f"  {ad}: {json.dumps(p)}")
-print("\nKaydedildi: reports/model/dl_hiperparametre_katlar.csv, dl_hiperparametre_denemeleri.csv, "
-      "dl_hiperparametre_en_iyi.json")
+print(f"\nKaydedildi: reports/model/dl_hiperparametre_katlar{SURUM_EKI}.csv, dl_hiperparametre_denemeleri{SURUM_EKI}.csv, "
+      f"dl_hiperparametre_en_iyi{SURUM_EKI}.json")

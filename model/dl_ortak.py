@@ -14,7 +14,21 @@ from ortak import ANA_KLASOR, VERI, SEED, kat_sabitleri, fizik_ekle, if_kalibras
 # ML ile AYNI kurallar: aynı katlar, kat sabitleri yalnızca eğitimden, normalizasyon yalnızca eğitimden,
 # balanced sınıf ağırlıkları, test sürüşlerine dokunulmaz.
 
-DL_EN_IYI_PARAMETRELER = os.path.join(ANA_KLASOR, "reports", "model", "dl_hiperparametre_en_iyi.json")
+# ÖN İŞLEME SÜRÜMÜ
+#   "genel"   : ilk sürüm — her kanal bütün eğitim verisinin ortalaması/std'siyle normalize; EPOCH 40, SABIR 5
+#   "merkezli": ikinci sürüm (üç değişiklik birlikte):
+#     1) Pencere içi merkezleme: her pencerede her kanalın KENDİ ortalaması çıkarılır → model sürüşe özgü
+#        SEVİYEYİ değil, sinyalin ŞEKLİNİ görür [örnek bazlı normalizasyon: Kim vd. 2022, RevIN, §3.1]
+#        Pencere std'sine BÖLÜNMEZ (BİZİM KARARIMIZ): std gürültü artışı (doğruluk kaybı) ve takılma için ayırt
+#        edici; bütün pencerelere aynı ölçek (eğitimdeki merkezlenmiş verinin std'si) uygulanır.
+#     2) Pencere ortalamaları AYRI bir girdi olarak modele geri verilir → seviye bilgisi kaybolmaz
+#        [Kim vd. 2022, §1 ve Tablo 3: silinen istatistikler geri verilmezse normalizasyon işe yaramıyor]
+#     3) Daha sabırlı erken durdurma: SABIR 15, EPOCH 100 [Prechelt 1998: doğrulama hatası iniş çıkışlıdır,
+#        aceleci kurallar erken durur; Ismail Fawaz vd. 2019, §3.3: uzun eğitim + en iyi turun seçilmesi]
+#   Sürümlerin sonuçları ayrı dosyalara yazılır (SURUM_EKI), birbirinin üzerine yazmaz.
+ON_ISLEME = "merkezli"
+SURUM_EKI = "" if ON_ISLEME == "genel" else f"_{ON_ISLEME}"
+DL_EN_IYI_PARAMETRELER = os.path.join(ANA_KLASOR, "reports", "model", f"dl_hiperparametre_en_iyi{SURUM_EKI}.json")
 CIHAZ = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # BİZİM KARARIMIZ (eğitim düzeni, bütün DL modellerinde aynı):
@@ -22,8 +36,7 @@ CIHAZ = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #     doğrulama sürüşleri eğitim sırasında HİÇ kullanılmaz (yalnızca sonda ölçmek için) → sızıntı yok.
 #   - En fazla EPOCH tur; iç doğrulama kaybı SABIR tur boyunca iyileşmezse durur, en iyi turun ağırlıkları alınır.
 IC_DOGRULAMA_ORANI = 0.15
-EPOCH = 40
-SABIR = 5
+EPOCH, SABIR = (40, 5) if ON_ISLEME == "genel" else (100, 15)
 TAHMIN_PAKETI = 4096
 
 # Varsayılan ayarlar (deneme 0) — yaygın başlangıç değerleri (BİZİM KARARIMIZ)
@@ -78,10 +91,19 @@ def kat_verisi(oz, X_ham, X_fizik, bilgi, egitim, dogrulama, set_adi, siniflar, 
     ic_dog = egitim & np.isin(surus, ic)
     ogr = egitim & ~ic_dog
 
-    # normalizasyon: kanal başına ortalama/std YALNIZCA modelin eğitildiği pencerelerden (sızıntı kuralı 2)
-    ort = dizi[ogr].reshape(-1, dizi.shape[2]).mean(0)
-    std = dizi[ogr].reshape(-1, dizi.shape[2]).std(0) + 1e-6
-    dizi_n = np.nan_to_num((dizi - ort) / std).astype(np.float32)
+    # normalizasyon: bütün istatistikler YALNIZCA modelin eğitildiği pencerelerden (sızıntı kuralı 2)
+    if ON_ISLEME == "genel":
+        ort = dizi[ogr].reshape(-1, dizi.shape[2]).mean(0)
+        std = dizi[ogr].reshape(-1, dizi.shape[2]).std(0) + 1e-6
+        dizi_n = np.nan_to_num((dizi - ort) / std).astype(np.float32)
+    else:
+        pencere_ort = dizi.mean(axis=1)                              # (pencere, kanal): her pencerenin seviyesi
+        merkezli = dizi - pencere_ort[:, None, :]                    # 1) seviye çıkarıldı, şekil kaldı
+        std = merkezli[ogr].reshape(-1, dizi.shape[2]).std(0) + 1e-6  # ortak ölçek (pencere std'sine bölünmez)
+        dizi_n = np.nan_to_num(merkezli / std).astype(np.float32)
+        # 2) seviyeler ayrı girdi olarak geri verilir (uzun geçmiş özellikleri varsa onlarla birlikte)
+        pencere_ort = pencere_ort.astype(np.float32)
+        skaler = pencere_ort if skaler is None else np.concatenate([pencere_ort, skaler], axis=1)
     if skaler is not None:
         s_ort, s_std = skaler[ogr].mean(0), skaler[ogr].std(0) + 1e-6
         skaler = np.nan_to_num((skaler - s_ort) / s_std).astype(np.float32)
