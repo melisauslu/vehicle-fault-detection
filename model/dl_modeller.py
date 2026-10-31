@@ -28,7 +28,7 @@ TAHMIN = os.path.join(ANA_KLASOR, "data", "model")
 OZELLIK_SETLERI = ["ham", "ham+fizik+gecmis"]          # ham: yalnızca sinyaller; ikincisi ML ana setinin karşılığı
 DENETIMLI = ["CNN", "GRU", "LSTM"]                       # 10 sınıf (sağlam + 9 arıza)
 DENETIMSIZ = ["Autoencoder"]                             # yalnızca sağlam pencerelerle; yalnızca "arıza var mı"
-AYARLI = False                                           # True → dl_hiperparametre_ayari.py'nin seçtiği ayarlar
+AYARLI = True                                           # True → dl_hiperparametre_ayari.py'nin seçtiği ayarlar
 SON_TEST = False                                         # YALNIZCA bütün kararlar bittikten sonra, bir kez True
 
 # ============================================================================
