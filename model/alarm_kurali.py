@@ -34,6 +34,7 @@ TAHMIN = os.path.join(ANA_KLASOR, "data", "model")
 # AYARLAR
 # ============================================================================
 AYARLI = True                       # True → ml_tahminler_ayarli.csv (ayarlı modeller), False → varsayılan
+DL_SURUM = "_merkezli"              # DL tahmin dosyası: dl_tahminler<DL_SURUM><_ayarli>.csv (Colab'dan indirilir)
 SET = "ham+fizik+gecmis"            # ana set
 TESPIT_HEDEFI = 0.95                # arızalı dosyaların en az bu kadarı yakalanmalı (BİZİM KARARIMIZ)
 YANLIS_ALARM_HEDEFI = 1.0           # saatte en fazla bu kadar yanlış alarm OLAYI (BİZİM KARARIMIZ, ürün hedefi)
@@ -43,8 +44,18 @@ oz, bilgi = veriyi_oku()
 adim_s = bilgi["adim_satir"] * 0.1
 ek = "_ayarli" if AYARLI else ""
 t = pd.read_csv(os.path.join(TAHMIN, f"ml_tahminler{ek}.csv"), sep=";", low_memory=False)
-t = t[t["ozellik_seti"] == SET].sort_values(["model", "dosya", "pencere_bitis_s"])
 modeller = sorted(t["model"].unique())
+# DL tahminleri (aynı katlar, aynı sütunlar) varsa eklenir → ML ve DL modelleri AYNI kuralla N alır
+dl_yol = os.path.join(TAHMIN, f"dl_tahminler{DL_SURUM}{ek}.csv")
+if os.path.exists(dl_yol):
+    dl = pd.read_csv(dl_yol, sep=";", low_memory=False)
+    modeller += sorted(dl["model"].unique())
+    t = pd.concat([t, dl], ignore_index=True)
+    print(f"DL tahminleri eklendi: {os.path.basename(dl_yol)}\n")
+else:
+    print(f"!!! {os.path.basename(dl_yol)} bulunamadı → yalnızca ML modelleri (Colab'dan data/model/ içine indir)\n")
+t = t[t["ozellik_seti"] == SET].sort_values(["model", "dosya", "pencere_bitis_s"])
+DENETIMSIZ = {"IsolationForest", "Autoencoder"}        # yalnızca "arıza var mı" der, arıza tipi söyleyemez
 
 
 def ardisik_say(a):
@@ -152,7 +163,7 @@ for model in modeller:
     x = tip[(tip["model"] == model) & (tip["N"] == secim[model])]
     g = x.groupby("ariza_tipi").agg(dosya=("tespit", "size"), tespit=("tespit", "mean"),
                                     gecikme_s=("gecikme_s", "median"), dogru_teshis=("dogru_teshis", "mean"))
-    if model == "IsolationForest":
+    if model in DENETIMSIZ:
         g = g.drop(columns="dogru_teshis")                 # arıza tipi söyleyemez
     print(f"--- {model} (N = {secim[model]}) ---")
     print(g.round(2).to_string(), "\n")
@@ -165,14 +176,17 @@ with open(os.path.join(RAPOR, f"alarm_kurali_secim{ek}.json"), "w", encoding="ut
     json.dump({"tespit_hedefi": TESPIT_HEDEFI, "yanlis_alarm_hedefi": YANLIS_ALARM_HEDEFI, "set": SET,
                "N": secim, "gerekce": gerekce}, f, ensure_ascii=False, indent=1)
 
-renk = {"XGBoost": "#2a6fbb", "RandomForest": "#e08a1e", "SVM": "#3a9a5b", "IsolationForest": "#8a5cc2"}
-isaret = {"XGBoost": "o", "RandomForest": "s", "SVM": "^", "IsolationForest": "D"}
+renk = {"XGBoost": "#2a6fbb", "RandomForest": "#e08a1e", "SVM": "#3a9a5b", "IsolationForest": "#8a5cc2",
+        "CNN": "#c23b3b", "GRU": "#2a9d9d", "LSTM": "#8c6d31", "Autoencoder": "#d16ba5"}
+isaret = {"XGBoost": "o", "RandomForest": "s", "SVM": "^", "IsolationForest": "D",
+          "CNN": "o", "GRU": "s", "LSTM": "^", "Autoencoder": "D"}
 fig, ax = plt.subplots(1, 2, figsize=(12, 4.5))
 for model in modeller:
     m = s[s["model"] == model]
     for a_, y, olcek in ((ax[0], m["yanlis_alarm_olay_saatte"], 1), (ax[1], m["tespit_edilen_dosya_orani"], 100)):
         a_.plot(m["N"], y * olcek, color=renk.get(model), marker=isaret.get(model), markersize=4,
-                linewidth=1.8, label=model)
+                linewidth=1.8, linestyle="--" if model in {"CNN", "GRU", "LSTM", "Autoencoder"} else "-",
+                label=model)                                # kesikli çizgi: DL, düz çizgi: ML
         if secim[model]:
             k = m[m["N"] == secim[model]]
             a_.plot(k["N"], k[y.name] * olcek, marker=isaret.get(model), markersize=10, color=renk.get(model),
