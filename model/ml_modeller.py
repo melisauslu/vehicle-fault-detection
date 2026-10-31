@@ -38,10 +38,10 @@ CIKARILAN_SINYALLER = []
 # Model ayarları (modellerin kendisi ortak.py/model_kur'da):
 #   False → varsayılan ayarlar (yaygın değerler; hiçbir ayar doğrulama/test sonucuna bakılarak seçilmedi)
 #   True  → hiperparametre_ayari.py'nin çapraz doğrulamayla seçtiği ayarlar (reports/model/hiperparametre_en_iyi.json)
-AYARLI = False
+AYARLI = True
 
 # Son test (7 sürüş) YALNIZCA bütün kararlar bittikten sonra, bir kez True yapılır (sızıntı kuralı 6)
-SON_TEST = False
+SON_TEST = True
 
 
 # ============================================================================
