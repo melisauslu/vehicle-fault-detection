@@ -68,10 +68,13 @@ def ardisik_say(a):
 
 
 def macro_f1(cm):
-    # karışıklık matrisinden macro-F1 (sklearn f1_score(average="macro", zero_division=0) ile aynı)
+    # karışıklık matrisinden macro-F1. Ortalama yalnızca bu örneklemde GERÇEKTEN bulunan sınıflar üzerinden alınır:
+    #   bootstrap bir sınıfın tek test dosyasını (ör. takılma: 1 dosya) dışarıda bırakırsa o sınıf "F1 = 0" sayılıp
+    #   ortalamayı yapay olarak düşürmesin. Bütün test setinde 10 sınıfın hepsi var → nokta değer sklearn ile aynı.
     tp = np.diag(cm).astype(float)
     pay, payda = 2 * tp, cm.sum(0) + cm.sum(1)
-    return float(np.mean(np.divide(pay, payda, out=np.zeros_like(pay), where=payda > 0)))
+    f1 = np.divide(pay, payda, out=np.zeros_like(pay), where=payda > 0)
+    return float(np.mean(f1[cm.sum(1) > 0]))
 
 
 def tespit_f1(cm, s):
@@ -132,10 +135,10 @@ def olcutler(model, secilen):
 
 rng = np.random.default_rng(SEED)
 orneklemler = [rng.choice(surusler, size=len(surusler), replace=True) for _ in range(TEKRAR)]
-satirlar = []
+satirlar, boot_hepsi = [], {}
 for model in modeller:
     nokta = olcutler(model, surusler)
-    boot = pd.DataFrame([olcutler(model, s) for s in orneklemler])
+    boot = boot_hepsi[model] = pd.DataFrame([olcutler(model, s) for s in orneklemler])
     r = {"model": model, "N": N_secim.get(model)}
     for k, v in nokta.items():
         r[k] = v
@@ -181,6 +184,32 @@ for model in modeller:
     print(f"--- {model} (N = {N_secim[model]}) ---")
     print(g.round(2).to_string(), "\n")
 
+# ---- EŞLİ KARŞILAŞTIRMA: her model − XGBoost, AYNI bootstrap örneklemlerinde ----
+# İki modelin aralıkları üst üste binse bile fark anlamlı olabilir (ya da tersi); doğrusu farkın kendi aralığı.
+# Aralık 0'ı içermiyorsa: fark bu 7 sürüşte tutarlı. 0'ı içeriyorsa: "fark var" denemez.
+REFERANS = "XGBoost"
+fark_satirlari = []
+if REFERANS in boot_hepsi:
+    for model in modeller:
+        if model == REFERANS:
+            continue
+        r = {"model": f"{model} − {REFERANS}"}
+        for k in ["macro_f1", "tespit_f1_pencere", "alarm_aninda_dogru_teshis", "tespit_edilen_dosya_orani"]:
+            if k not in boot_hepsi[model] or boot_hepsi[model][k].isna().all():
+                r[k] = "–"
+                continue
+            d = boot_hepsi[model][k] - boot_hepsi[REFERANS][k]
+            nokta = s.loc[s["model"] == model, k].iloc[0] - s.loc[s["model"] == REFERANS, k].iloc[0]
+            alt, ust = np.nanpercentile(d, [2.5, 97.5])
+            r[k] = f"{nokta:+.3f} [{alt:+.3f} – {ust:+.3f}]" + ("" if alt <= 0 <= ust else " *")
+        fark_satirlari.append(r)
+    fark = pd.DataFrame(fark_satirlari).rename(columns={
+        "macro_f1": "macro-F1 farkı", "tespit_f1_pencere": "tespit-F1 farkı",
+        "alarm_aninda_dogru_teshis": "doğru teşhis farkı", "tespit_edilen_dosya_orani": "yakalanan dosya farkı"})
+    print(f"=== Eşli karşılaştırma: model − {REFERANS} [%95 aralık]  (* = aralık 0'ı içermiyor → fark tutarlı) ===")
+    print(fark.to_string(index=False))
+    fark.to_csv(os.path.join(RAPOR, f"son_test_fark{ek}.csv"), sep=";", index=False)
+
 s.to_csv(os.path.join(RAPOR, f"son_test_sonuclar{ek}.csv"), sep=";", index=False)
 tablo.to_csv(os.path.join(RAPOR, f"son_test_tablo{ek}.csv"), sep=";", index=False)
-print(f"Kaydedildi: reports/model/son_test_sonuclar{ek}.csv, son_test_tablo{ek}.csv")
+print(f"\nKaydedildi: reports/model/son_test_sonuclar{ek}.csv, son_test_tablo{ek}.csv, son_test_fark{ek}.csv")
