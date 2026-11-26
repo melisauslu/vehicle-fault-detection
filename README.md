@@ -141,4 +141,4 @@ Settings are at the top of each script (e.g. `AYARLI = True` for tuned models, `
 
 ## Author
 
-Melisa Uslu — Master's student, Computer Engineering
+Melisa Uslu
