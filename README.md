@@ -2,7 +2,7 @@
 
 Machine learning and deep learning models that detect **whether** a fault is present and diagnose **which** fault it is, using real driving data from a BMW i3 electric vehicle. Faults are injected into healthy real-world winter driving data using formulas from the literature, and eight models are compared under the same, leakage-free evaluation protocol.
 
-> Master's project (Project Design course). Code comments and variable names are in Turkish.
+
 
 ---
 
