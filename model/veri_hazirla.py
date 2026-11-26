@@ -12,13 +12,14 @@ ANA_KLASOR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMIZ = os.path.join(ANA_KLASOR, "data", "clean_B")
 ARIZALI = os.path.join(ANA_KLASOR, "data", "faulty")
 SPLIT = os.path.join(ANA_KLASOR, "split.csv")
-CIKTI = os.path.join(ANA_KLASOR, "data", "model")
+CIKTI = os.environ.get("VERI_KLASORU") or os.path.join(ANA_KLASOR, "data", "model")   # pencere_duyarlilik.py başka klasör verir
 
 # ============================================================================
 # AYARLAR
 # ============================================================================
 DT = 0.1                 # 10 Hz
-PENCERE = 300            # 30 s  (BİZİM KARARIMIZ: başlangıç değeri; 10 s ve 60 s de denenecek)
+PENCERE = int(os.environ.get("PENCERE_S", 30)) * 10   # 30 s (BİZİM KARARIMIZ); diğer boylar: pencere_duyarlilik.py
+DL_KAYDET = os.environ.get("DL_KAYDET", "1") == "1"   # pencere_duyarlilik.py DL dizilerini kaydetmez
 ADIM = 50                # 5 s
 DL_SEYREKLESTIR = 5      # derin öğrenme için her 5. satır (2 Hz): sensörler zaten 0.2–1 s'de güncelleniyor
 KAT_SAYISI = 5           # eğitim sürüşlerinde sürüş bazında 5 katlı çapraz doğrulama
@@ -224,9 +225,10 @@ def isle(d, ad, kaynak, tip, sinyal, siddet, n0):
         "ariza_siddeti": 0.0 if n0 is None else siddet,
         "ariza_suresi_s": 0.0 if n0 is None else np.round((son - n0 + 1) * DT, 1),   # arıza ne zamandır var
     }))
-    Wd = W[:, ::DL_SEYREKLESTIR].astype(np.float32)        # derin öğrenme için 2 Hz
-    X_ham.append(Wd[:, :, ham_idx])
-    X_fizik.append(Wd[:, :, fizik_idx])
+    if DL_KAYDET:
+        Wd = W[:, ::DL_SEYREKLESTIR].astype(np.float32)    # derin öğrenme için 2 Hz
+        X_ham.append(Wd[:, :, ham_idx])
+        X_fizik.append(Wd[:, :, fizik_idx])
 
 
 for ad, d in saglam.items():
@@ -238,14 +240,16 @@ for _, r in liste.iterrows():
 
 oz = pd.concat(oz_parcalar, ignore_index=True)
 meta = pd.concat(meta_parcalar, ignore_index=True)
-X_ham, X_fizik = np.concatenate(X_ham), np.concatenate(X_fizik)
+if DL_KAYDET:
+    X_ham, X_fizik = np.concatenate(X_ham), np.concatenate(X_fizik)
 
 # ============================================================================
 # KAYDET
 # ============================================================================
 os.makedirs(CIKTI, exist_ok=True)
 pd.concat([meta, oz], axis=1).to_csv(os.path.join(CIKTI, "pencereler_ozellik.csv"), sep=";", index=False)
-np.savez_compressed(os.path.join(CIKTI, "pencereler_ham.npz"), X_ham=X_ham, X_fizik=X_fizik)
+if DL_KAYDET:
+    np.savez_compressed(os.path.join(CIKTI, "pencereler_ham.npz"), X_ham=X_ham, X_fizik=X_fizik)
 
 ozellik_gruplari = {
     "ham_istatistik": [c for c in oz.columns if c.split("__")[0] in HAM and c not in YARDIMCI + UZUN],
@@ -273,7 +277,8 @@ print(f"Özellik sayısı — ham istatistik: {len(ozellik_gruplari['ham_istatis
       f"{len(ozellik_gruplari['fizik_dusuk'])}, fizik (riskli): {len(ozellik_gruplari['fizik_riskli'])}, "
       f"uzun geçmiş: {len(ozellik_gruplari['uzun_gecmis'])}"
       f"  (soc_farki, soc_farki_5dk, su_isinmasi_farki, direnc_orani her katta model kodunda hesaplanır)")
-print(f"Derin öğrenme dizileri: X_ham {X_ham.shape}, X_fizik {X_fizik.shape}  (pencere, zaman adımı, kanal)\n")
+if DL_KAYDET:
+    print(f"Derin öğrenme dizileri: X_ham {X_ham.shape}, X_fizik {X_fizik.shape}  (pencere, zaman adımı, kanal)\n")
 print("Pencere sayısı, arıza tipi × grup:")
 print(pd.crosstab(meta["ariza_tipi"], meta["grup"], margins=True, margins_name="toplam").to_string())
 print("\nKatlara göre sürüş ve pencere sayısı (−1 = son test):")
@@ -299,5 +304,8 @@ print("\nUzun geçmiş özellikleri, arıza tipine göre ortanca |değer| (sağl
 print(u.groupby(meta["ariza_tipi"])[ozellik_gruplari["uzun_gecmis"]].agg(lambda v: v.abs().median())
       .rename(columns=lambda c: c.replace("Battery ", "").replace(" [V]", "").replace(" [A]", "")
               .replace(" [°C]", "")).to_string(float_format=lambda v: f"{v:.4g}"))
-kayit_mb = os.path.getsize(os.path.join(CIKTI, "pencereler_ham.npz")) / 1e6
-print(f"\nKaydedildi: data/model/pencereler_ozellik.csv, pencereler_ham.npz ({kayit_mb:.0f} MB), bilgi.json")
+if DL_KAYDET:
+    kayit_mb = os.path.getsize(os.path.join(CIKTI, "pencereler_ham.npz")) / 1e6
+    print(f"\nKaydedildi: {CIKTI}: pencereler_ozellik.csv, pencereler_ham.npz ({kayit_mb:.0f} MB), bilgi.json")
+else:
+    print(f"\nKaydedildi: {CIKTI}: pencereler_ozellik.csv, bilgi.json (DL dizileri kaydedilmedi)")

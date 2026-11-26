@@ -18,7 +18,7 @@ from xgboost import XGBClassifier
 # EĞİTİM pencerelerinden öğrenilir; doğrulama/test pencerelerine yalnızca uygulanır.
 
 ANA_KLASOR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VERI = os.path.join(ANA_KLASOR, "data", "model")
+VERI = os.environ.get("VERI_KLASORU") or os.path.join(ANA_KLASOR, "data", "model")   # pencere_duyarlilik.py başka klasör verir
 EN_IYI_PARAMETRELER = os.path.join(ANA_KLASOR, "reports", "model", "hiperparametre_en_iyi.json")
 DT = 0.1
 SEED = 42
